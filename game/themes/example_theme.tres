@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ExampleTheme" load_steps=2 format=3 uid="uid://dlx3kgdrgmuca"]
+
+[ext_resource type="Script" uid="uid://dbs3cb0ttd53o" path="res://game/themes/example_theme.gd" id="1_q0fkf"]
+
+[resource]
+script = ExtResource("1_q0fkf")
+dark_purple = Color(0.0745098, 0, 0.117647, 1)
+medium_purple = Color(0.239216, 0.00392157, 0.282353, 1)
+purple = Color(0.403922, 0.25098, 0.392157, 1)
+dark_blue = Color(0, 0.0392157, 0.117647, 1)
+medium_blue = Color(0.0862745, 0.137255, 0.247059, 1)
+blue = Color(0.196078, 0.309804, 0.54902, 1)
+dark_green = Color(0, 0.117647, 0.0901961, 1)
+medium_green = Color(0.164706, 0.254902, 0.227451, 1)
+green = Color(0.345098, 0.505882, 0.458824, 1)
+red = Color(1, 0.0214844, 0.0214844, 1)

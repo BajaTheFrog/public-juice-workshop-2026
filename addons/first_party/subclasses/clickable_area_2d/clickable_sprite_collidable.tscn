@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://f1p30ctkw5ip"]
+
+[ext_resource type="PackedScene" uid="uid://bgi4aqx43yxir" path="res://addons/first_party/subclasses/clickable_area_2d/clickable_sprite.tscn" id="2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(100, 100)
+
+[node name="ClickableSprite" instance=ExtResource("2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable Area3D 2D" index="0"]
+shape = SubResource("1")

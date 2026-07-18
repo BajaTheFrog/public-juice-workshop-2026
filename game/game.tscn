@@ -1,0 +1,121 @@
+[gd_scene load_steps=22 format=3 uid="uid://3e5k4ur4jt2k"]
+
+[ext_resource type="Script" uid="uid://d0ikr8850qwp7" path="res://game/game.gd" id="1_ssvhv"]
+[ext_resource type="Script" uid="uid://ykjev1w1vn7p" path="res://game/members/groups.gd" id="2_17c8m"]
+[ext_resource type="Script" uid="uid://dnuvx5uwx55nu" path="res://game/members/info.gd" id="2_u8s88"]
+[ext_resource type="Script" uid="uid://ssmmndu1a2g1" path="res://game/members/events.gd" id="3_338ad"]
+[ext_resource type="Script" uid="uid://cvc770lavnlqj" path="res://game/members/content.gd" id="4_hb504"]
+[ext_resource type="Script" uid="uid://bsf0qmn5ctmt7" path="res://game/members/messages.gd" id="4_nil48"]
+[ext_resource type="Script" uid="uid://c6labre6sl4ul" path="res://game/members/change.gd" id="5_ee6o4"]
+[ext_resource type="Script" uid="uid://ic8onlgppxg6" path="res://game/services/theme_service.gd" id="5_icxu6"]
+[ext_resource type="PackedScene" uid="uid://x7q2pksiwc2j" path="res://game/content/contexts/title_context/title_context.tscn" id="6_ln7ps"]
+[ext_resource type="Script" uid="uid://b8alurxacnwr2" path="res://game/services/sound_service.gd" id="6_umn5j"]
+[ext_resource type="Script" uid="uid://vue2fkvd7dlp" path="res://game/services/pause_service.gd" id="7_75xdj"]
+[ext_resource type="Script" uid="uid://c66yh8k6ve1oc" path="res://game/services/services.gd" id="7_ln7ps"]
+[ext_resource type="Script" uid="uid://bv7486ax5dlci" path="res://game/services/time_service.gd" id="8_pwiwr"]
+[ext_resource type="PackedScene" uid="uid://dwuwvlxqvw3qo" path="res://game/content/contexts/play_context/play_context.tscn" id="8_u8s88"]
+[ext_resource type="Script" uid="uid://djtpej5yupe3n" path="res://game/services/screen_service.gd" id="9_tndbu"]
+[ext_resource type="Script" uid="uid://cfolffoo7d8of" path="res://game/services/camera_service.gd" id="10_a27wu"]
+[ext_resource type="Script" uid="uid://b308b0vxffy38" path="res://game/services/world_service.gd" id="11_gjgov"]
+[ext_resource type="Script" uid="uid://8ccfmkekb5p0" path="res://game/services/entity_service.gd" id="12_pemik"]
+[ext_resource type="Script" uid="uid://doilunhpaclqt" path="res://game/members/transition.gd" id="17_4cobl"]
+[ext_resource type="Script" uid="uid://c5rbaqiovufxm" path="res://game/members/steps.gd" id="18_stepr"]
+[ext_resource type="PackedScene" path="res://game/juice/juice_menu.tscn" id="19_jmenu"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("info", "events", "groups", "messages", "steps", "content", "change", "services")]
+script = ExtResource("1_ssvhv")
+info = NodePath("info")
+events = NodePath("events")
+groups = NodePath("groups")
+messages = NodePath("messages")
+steps = NodePath("steps")
+content = NodePath("content")
+change = NodePath("change")
+services = NodePath("services")
+use_content_root = false
+
+[node name="info" type="Node" parent="."]
+script = ExtResource("2_u8s88")
+
+[node name="config" type="Node" parent="."]
+
+[node name="events" type="Node" parent="."]
+script = ExtResource("3_338ad")
+
+[node name="groups" type="Node" parent="."]
+script = ExtResource("2_17c8m")
+
+[node name="messages" type="Node" parent="."]
+script = ExtResource("4_nil48")
+
+[node name="steps" type="Node" parent="."]
+script = ExtResource("18_stepr")
+
+[node name="content" type="Node" parent="."]
+script = ExtResource("4_hb504")
+title_context_scene = ExtResource("6_ln7ps")
+play_context_scene = ExtResource("8_u8s88")
+
+[node name="change" type="Node" parent="." node_paths=PackedStringArray("content_root", "transition_root")]
+script = ExtResource("5_ee6o4")
+content_root = NodePath("../content_root")
+transition_root = NodePath("../transition_root")
+
+[node name="services" type="Node" parent="." node_paths=PackedStringArray("theme", "sound", "pause", "time", "screen", "camera", "world", "entity")]
+script = ExtResource("7_ln7ps")
+theme = NodePath("theme_service")
+sound = NodePath("sound_service")
+pause = NodePath("pause_service")
+time = NodePath("time_service")
+screen = NodePath("screen_service")
+camera = NodePath("camera_service")
+world = NodePath("world_service")
+entity = NodePath("entity_service")
+
+[node name="theme_service" type="Node" parent="services"]
+script = ExtResource("5_icxu6")
+
+[node name="sound_service" type="Node" parent="services"]
+script = ExtResource("6_umn5j")
+
+[node name="pause_service" type="Node" parent="services"]
+process_mode = 3
+script = ExtResource("7_75xdj")
+
+[node name="time_service" type="Node" parent="services"]
+script = ExtResource("8_pwiwr")
+
+[node name="screen_service" type="Node" parent="services"]
+script = ExtResource("9_tndbu")
+
+[node name="camera_service" type="Node" parent="services"]
+script = ExtResource("10_a27wu")
+
+[node name="world_service" type="Node" parent="services"]
+script = ExtResource("11_gjgov")
+
+[node name="entity_service" type="Node" parent="services"]
+script = ExtResource("12_pemik")
+
+[node name="mouse_service" type="Node" parent="services"]
+
+[node name="content_root" type="CanvasLayer" parent="."]
+
+[node name="transition_root" type="CanvasLayer" parent="." node_paths=PackedStringArray("color_rect")]
+layer = 10
+script = ExtResource("17_4cobl")
+fade_time = 0.15
+color_rect = NodePath("color_rect")
+
+[node name="color_rect" type="ColorRect" parent="transition_root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="juice_menu" parent="." instance=ExtResource("19_jmenu")]
+
+[node name="persistent_sounds" type="Node" parent="."]

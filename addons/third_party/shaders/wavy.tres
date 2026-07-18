@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ccmr40ftcm0e"]
+
+[ext_resource type="Shader" uid="uid://byr3ndvcaygwh" path="res://game/shaders/wavy.gdshader" id="1_87wue"]
+
+[resource]
+shader = ExtResource("1_87wue")

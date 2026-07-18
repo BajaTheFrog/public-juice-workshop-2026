@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://x7q2pksiwc2j"]
+
+[ext_resource type="Script" uid="uid://dabgilp7hrqhp" path="res://game/content/contexts/title_context/title_context.gd" id="1_dve1w"]
+
+[node name="title_context" type="Node2D"]
+script = ExtResource("1_dve1w")
+
+[node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="sample_bg" type="ColorRect" parent="ui_layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.873047, 0.697368, 0.659901, 1)
+
+[node name="sample_label" type="Label" parent="ui_layer"]
+modulate = Color(0.210938, 0.0457306, 0.0457306, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "THE TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="layout_control" type="Control" parent="ui_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start_button" type="Button" parent="ui_layer/layout_control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.8
+anchor_right = 0.6
+anchor_bottom = 0.9
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "START"
+
+[connection signal="pressed" from="ui_layer/layout_control/start_button" to="." method="_on_start_button_pressed"]

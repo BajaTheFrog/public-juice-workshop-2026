@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dppy7c311a6pu"]
+
+[ext_resource type="Script" uid="uid://d2anu11n7dh0i" path="res://game/main.gd" id="1_oa506"]
+
+[node name="boot" type="Node"]
+script = ExtResource("1_oa506")
+
+[node name="context_root" type="Node" parent="."]

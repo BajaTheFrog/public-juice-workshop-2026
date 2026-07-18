@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkbgapvgw23w8"]
+
+[ext_resource type="PackedScene" uid="uid://bo8rk4h4tb73a" path="res://game/content/entities/bat.tscn" id="1_okcff"]
+
+[node name="bat_level_1" instance=ExtResource("1_okcff")]

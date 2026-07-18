@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://duj0wkdme7t8a"]
+
+[ext_resource type="Script" uid="uid://cbnhh35wv3py6" path="res://game/content/objects/bat_detection_zone.gd" id="1_amvdt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk8uc"]
+size = Vector2(300, 1080)
+
+[node name="bat_zone" type="Area2D"]
+collision_layer = 4096
+collision_mask = 256
+script = ExtResource("1_amvdt")
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(-150, 540)
+shape = SubResource("RectangleShape2D_kk8uc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

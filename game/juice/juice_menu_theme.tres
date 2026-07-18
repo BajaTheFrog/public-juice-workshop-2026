@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://2mtkuqosuf34"]
+
+[resource]
+default_font_size = 22
+CheckBox/constants/h_separation = 12
+HBoxContainer/constants/separation = 16
+VBoxContainer/constants/separation = 10

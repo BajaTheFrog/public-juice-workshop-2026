@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://hqqqmbq5wvs0"]
+
+[ext_resource type="Shader" uid="uid://b3yrltpdk3tjf" path="res://addons/third_party/shaders/single_color_shader.gdshader" id="1"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1")
+shader_parameter/active = true
+shader_parameter/color = Color(1, 1, 1, 1)

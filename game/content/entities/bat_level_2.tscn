@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3wp56f3tg4xe"]
+
+[ext_resource type="PackedScene" uid="uid://bo8rk4h4tb73a" path="res://game/content/entities/bat.tscn" id="1_4apyn"]
+[ext_resource type="Texture2D" uid="uid://dxvthwi8j54sn" path="res://game/content/entities/bat_level_2_wing.png" id="2_l1umk"]
+[ext_resource type="Texture2D" uid="uid://dndbv2ayt4oep" path="res://game/content/entities/bat_level_2_body.png" id="3_ffktl"]
+[ext_resource type="Texture2D" uid="uid://ccvo7r2leru31" path="res://game/content/entities/bat_level_2_brow.png" id="4_jl2wg"]
+
+[node name="bat" instance=ExtResource("1_4apyn")]
+level_speed_mult = 1.5
+
+[node name="wing_sprite" parent="body_anchor/wings_anchor/left_wing_anchor" index="0"]
+texture = ExtResource("2_l1umk")
+
+[node name="wing_sprite" parent="body_anchor/wings_anchor/right_wing_anchor" index="0"]
+texture = ExtResource("2_l1umk")
+
+[node name="body_sprite" parent="body_anchor" index="1"]
+texture = ExtResource("3_ffktl")
+
+[node name="eyebrow_sprite" parent="body_anchor/body_sprite" index="0"]
+texture = ExtResource("4_jl2wg")

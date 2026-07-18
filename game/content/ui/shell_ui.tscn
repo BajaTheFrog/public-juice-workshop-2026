@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddy74gke24lw1"]
+
+[ext_resource type="Texture2D" uid="uid://dxe5di7sk8cva" path="res://game/content/entities/seed.png" id="1_qlppd"]
+
+[node name="shell_ui" type="ColorRect"]
+custom_minimum_size = Vector2(20, 50)
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(10, 25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0.99607843, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -125.0
+offset_right = 140.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 150)
+texture = ExtResource("1_qlppd")

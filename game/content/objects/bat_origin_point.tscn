@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://nk87mh6jmt03"]
+
+[ext_resource type="Script" uid="uid://bdaypise7fx2q" path="res://addons/first_party/components/spawning/spawner/spawner_2d.gd" id="1_6kedk"]
+[ext_resource type="Script" uid="uid://bv6sd3ryu61jl" path="res://game/content/objects/bat_origin_point.gd" id="1_q2oyt"]
+[ext_resource type="PackedScene" uid="uid://bo8rk4h4tb73a" path="res://game/content/entities/bat.tscn" id="2_ahupv"]
+
+[node name="bat_origin_point" type="Node2D" node_paths=PackedStringArray("spawner")]
+script = ExtResource("1_q2oyt")
+level_1_bat_scene = ExtResource("2_ahupv")
+level_2_bat_scene = ExtResource("2_ahupv")
+level_3_bat_scene = ExtResource("2_ahupv")
+spawner = NodePath("spawner")
+
+[node name="spawner" type="Node2D" parent="."]
+script = ExtResource("1_6kedk")
+position_mode = 1
+rotation_mode = 1
+metadata/_custom_type_script = "uid://bdaypise7fx2q"
+
+[connection signal="node_spawned" from="spawner" to="." method="_on_spawner_node_spawned"]

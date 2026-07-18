@@ -1,0 +1,162 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn3b1mlp1d0fh"]
+
+[ext_resource type="Script" uid="uid://bqftpjrrmeck3" path="res://game/juice/juice_menu.gd" id="1_jmenu"]
+[ext_resource type="Theme" uid="uid://2mtkuqosuf34" path="res://game/juice/juice_menu_theme.tres" id="2_jtheme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.12459989, 0.019721985, 0.18359375, 0.9764706)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.30761716, 0, 0.47851563, 0.9411765)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tab_panel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tabbar"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_unselected"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.2)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_hovered"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.94, 0.55, 0.12)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_selected"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.94, 0.55, 0.22)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0, 0, 0, 0.25)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(1, 0.94, 0.55, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="juice_menu" type="CanvasLayer" node_paths=PackedStringArray("panel", "tabs", "title_label", "progress_bar", "sequence_list", "moment_list", "type_list", "all_on_button", "all_off_button")]
+process_mode = 3
+layer = 9
+script = ExtResource("1_jmenu")
+panel = NodePath("panel")
+tabs = NodePath("panel/margin/content/tabs")
+title_label = NodePath("panel/margin/content/header/title")
+progress_bar = NodePath("panel/margin/content/progress")
+sequence_list = NodePath("panel/margin/content/tabs/sequence/sequence_list")
+moment_list = NodePath("panel/margin/content/tabs/moment/moment_list")
+type_list = NodePath("panel/margin/content/tabs/type/type_list")
+all_on_button = NodePath("panel/margin/content/header/all_on_button")
+all_off_button = NodePath("panel/margin/content/header/all_off_button")
+
+[node name="panel" type="PanelContainer" parent="."]
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 940.0
+offset_bottom = 1020.0
+theme = ExtResource("2_jtheme")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="margin" type="MarginContainer" parent="panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
+
+[node name="content" type="VBoxContainer" parent="panel/margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="header" type="HBoxContainer" parent="panel/margin/content"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="panel/margin/content/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "JUICE"
+
+[node name="all_on_button" type="Button" parent="panel/margin/content/header"]
+layout_mode = 2
+text = "All On"
+
+[node name="all_off_button" type="Button" parent="panel/margin/content/header"]
+layout_mode = 2
+text = "All Off"
+
+[node name="progress" type="ProgressBar" parent="panel/margin/content"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+max_value = 17.0
+rounded = true
+show_percentage = false
+
+[node name="tabs" type="TabContainer" parent="panel/margin/content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tab_panel")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_tabbar")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_tab_unselected")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_tab_hovered")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_tab_selected")
+current_tab = 0
+
+[node name="sequence" type="ScrollContainer" parent="panel/margin/content/tabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="sequence_list" type="VBoxContainer" parent="panel/margin/content/tabs/sequence"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="type" type="ScrollContainer" parent="panel/margin/content/tabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="type_list" type="VBoxContainer" parent="panel/margin/content/tabs/type"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="moment" type="ScrollContainer" parent="panel/margin/content/tabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="moment_list" type="VBoxContainer" parent="panel/margin/content/tabs/moment"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://h1vxcs6pt4ro"]
+
+[ext_resource type="Script" uid="uid://dmh8e6se2y3mc" path="res://game/content/objects/player_bullet_juice_box.gd" id="1_pbjb"]
+[ext_resource type="Script" uid="uid://ctgu71141f3mo" path="res://game/content/objects/player_bullet.gd" id="1_y7xtr"]
+[ext_resource type="Texture2D" uid="uid://dxe5di7sk8cva" path="res://game/content/entities/seed.png" id="2_xk5uo"]
+[ext_resource type="Texture2D" uid="uid://bvs3yrm1jheu0" path="res://game/content/entities/muzzle_flash.png" id="4_fxps0"]
+[ext_resource type="AudioStream" uid="uid://dcl1cmk0h18bg" path="res://game/content/sounds/gun_shoot.wav" id="5_shoot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xk5uo"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3mmu"]
+radius = 39.999996
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7xtr"]
+radius = 3.0
+
+[node name="player_bullet" type="CharacterBody2D" node_paths=PackedStringArray("juice_box", "hit_area", "hurt_area")]
+collision_layer = 32
+collision_mask = 7
+script = ExtResource("1_y7xtr")
+juice_box = NodePath("juice_box")
+hit_area = NodePath("body/hit_area")
+hurt_area = NodePath("body/hurt_area")
+
+[node name="juice_box" type="Node" parent="." node_paths=PackedStringArray("body", "muzzle_sprite")]
+script = ExtResource("1_pbjb")
+body = NodePath("../body")
+muzzle_sprite = NodePath("../flash_sprite")
+shoot_sound = ExtResource("5_shoot")
+
+[node name="body" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="body_sprite" type="Sprite2D" parent="body"]
+rotation = 1.5707964
+texture = ExtResource("2_xk5uo")
+
+[node name="hit_area" type="Area2D" parent="body"]
+scale = Vector2(9.999999, 9.999999)
+collision_layer = 512
+collision_mask = 256
+
+[node name="collision_shape" type="CollisionShape2D" parent="body/hit_area"]
+shape = SubResource("CircleShape2D_xk5uo")
+
+[node name="hurt_area" type="Area2D" parent="body"]
+collision_layer = 512
+collision_mask = 7
+
+[node name="collision_shape" type="CollisionShape2D" parent="body/hurt_area"]
+shape = SubResource("CircleShape2D_b3mmu")
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y7xtr")
+
+[node name="flash_sprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.9880057, 0.9902344, 0.87612534, 1)
+position = Vector2(100, 1)
+texture = ExtResource("4_fxps0")
+
+[connection signal="area_entered" from="body/hit_area" to="." method="_on_hit_area_area_entered"]
+[connection signal="area_entered" from="body/hurt_area" to="." method="_on_hurt_area_area_entered"]
+[connection signal="body_entered" from="body/hurt_area" to="." method="_on_hurt_area_body_entered"]

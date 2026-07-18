@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo8rk4h4tb73a"]
+
+[ext_resource type="Script" uid="uid://dh3panrkgnexk" path="res://game/content/entities/bat_juice_box.gd" id="1_batjb"]
+[ext_resource type="Script" uid="uid://dxt5snkq18d27" path="res://game/content/entities/bat.gd" id="1_rb72r"]
+[ext_resource type="Texture2D" uid="uid://cx3pbpjxo6p8q" path="res://game/content/entities/bat_level_1_body.png" id="2_rb72r"]
+[ext_resource type="Texture2D" uid="uid://cf1qa3f830q8h" path="res://game/content/entities/bat_level_1_wing.png" id="3_scdxr"]
+[ext_resource type="Script" uid="uid://dauaw13ep250m" path="res://addons/first_party/components/sequencers/float/wave_sequencer.gd" id="4_fl7hc"]
+[ext_resource type="Material" uid="uid://hqqqmbq5wvs0" path="res://addons/third_party/shaders/single_color_shader_material.tres" id="4_nmvvp"]
+[ext_resource type="AudioStream" uid="uid://b2qlu610uat4b" path="res://game/content/sounds/bat_hit.wav" id="5_bathit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_scdxr"]
+radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fl7hc"]
+radius = 46.666664
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmvvp"]
+radius = 23.333332
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rb72r"]
+radius = 25.0
+
+[node name="bat" type="CharacterBody2D" node_paths=PackedStringArray("juice_box", "hurt_area", "hit_area", "interaction_area", "left_wing_anchor", "right_wing_anchor", "wing_sequencer")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_rb72r")
+juice_box = NodePath("juice_box")
+hurt_area = NodePath("body_anchor/hurt_area")
+hit_area = NodePath("body_anchor/hit_area")
+interaction_area = NodePath("body_anchor/interaction_area")
+left_wing_anchor = NodePath("body_anchor/wings_anchor/left_wing_anchor")
+right_wing_anchor = NodePath("body_anchor/wings_anchor/right_wing_anchor")
+wing_sequencer = NodePath("wing_sequencer")
+
+[node name="juice_box" type="Node" parent="." node_paths=PackedStringArray("hit_flash_sprites")]
+script = ExtResource("1_batjb")
+hit_flash_sprites = [NodePath("../body_anchor/wings_anchor/left_wing_anchor/wing_sprite/wing_hit_flash"), NodePath("../body_anchor/wings_anchor/right_wing_anchor/wing_sprite/wing_hit_flash"), NodePath("../body_anchor/body_sprite/body_hit_flash")]
+hit_sound = ExtResource("5_bathit")
+
+[node name="body_anchor" type="Node2D" parent="."]
+
+[node name="wings_anchor" type="Node2D" parent="body_anchor"]
+position = Vector2(0, -20)
+
+[node name="left_wing_anchor" type="Node2D" parent="body_anchor/wings_anchor"]
+position = Vector2(-50, 0)
+
+[node name="wing_sprite" type="Sprite2D" parent="body_anchor/wings_anchor/left_wing_anchor"]
+scale = Vector2(-0.4, 0.4)
+texture = ExtResource("3_scdxr")
+offset = Vector2(65, -45)
+
+[node name="wing_hit_flash" type="Sprite2D" parent="body_anchor/wings_anchor/left_wing_anchor/wing_sprite"]
+visible = false
+material = ExtResource("4_nmvvp")
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_scdxr")
+offset = Vector2(65, -45)
+
+[node name="right_wing_anchor" type="Node2D" parent="body_anchor/wings_anchor"]
+position = Vector2(50, 0)
+
+[node name="wing_sprite" type="Sprite2D" parent="body_anchor/wings_anchor/right_wing_anchor"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_scdxr")
+offset = Vector2(65, -45)
+
+[node name="wing_hit_flash" type="Sprite2D" parent="body_anchor/wings_anchor/right_wing_anchor/wing_sprite"]
+visible = false
+material = ExtResource("4_nmvvp")
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_scdxr")
+offset = Vector2(65, -45)
+
+[node name="body_sprite" type="Sprite2D" parent="body_anchor"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rb72r")
+
+[node name="eyebrow_sprite" type="Sprite2D" parent="body_anchor/body_sprite"]
+
+[node name="body_hit_flash" type="Sprite2D" parent="body_anchor/body_sprite"]
+visible = false
+material = ExtResource("4_nmvvp")
+texture = ExtResource("2_rb72r")
+
+[node name="hurt_area" type="Area2D" parent="body_anchor"]
+scale = Vector2(1.6666666, 1.6666666)
+collision_layer = 256
+collision_mask = 512
+
+[node name="collision_shape" type="CollisionShape2D" parent="body_anchor/hurt_area"]
+shape = SubResource("CircleShape2D_scdxr")
+
+[node name="hit_area" type="Area2D" parent="body_anchor"]
+collision_layer = 256
+collision_mask = 128
+
+[node name="collision_shape" type="CollisionShape2D" parent="body_anchor/hit_area"]
+shape = SubResource("CircleShape2D_fl7hc")
+
+[node name="interaction_area" type="Area2D" parent="body_anchor"]
+collision_layer = 256
+collision_mask = 4096
+
+[node name="collision_shape" type="CollisionShape2D" parent="body_anchor/interaction_area"]
+shape = SubResource("CircleShape2D_nmvvp")
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rb72r")
+
+[node name="wing_sequencer" type="Node" parent="."]
+script = ExtResource("4_fl7hc")
+min_value = -30.0
+max_value = 30.0
+min_to_max_time = 0.25
+metadata/_custom_type_script = "uid://dauaw13ep250m"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="area_entered" from="body_anchor/hurt_area" to="." method="_on_hurt_area_area_entered"]
+[connection signal="area_entered" from="body_anchor/hit_area" to="." method="_on_hit_area_area_entered"]
+[connection signal="new_value" from="wing_sequencer" to="." method="_on_wing_sequencer_new_value"]

@@ -1,0 +1,122 @@
+[gd_scene load_steps=19 format=3 uid="uid://crpi2bpr2rxdp"]
+
+[ext_resource type="Script" uid="uid://6wmpk8kdgnkg" path="res://game/content/entities/player_juice_box.gd" id="1_jcbox"]
+[ext_resource type="Script" uid="uid://3hbb6b4uwhv7" path="res://game/content/entities/player.gd" id="1_xfnnr"]
+[ext_resource type="Texture2D" uid="uid://covh74qtfwtqe" path="res://game/content/entities/lemon_body.png" id="2_o3tkb"]
+[ext_resource type="Texture2D" uid="uid://cril84mxp226r" path="res://game/content/entities/lemon_face.png" id="3_o3tkb"]
+[ext_resource type="Script" uid="uid://cvw1h24app67s" path="res://addons/first_party/components/spawning/launcher/launcher.gd" id="3_rigkb"]
+[ext_resource type="PackedScene" uid="uid://h1vxcs6pt4ro" path="res://game/content/objects/player_bullet.tscn" id="4_3xtuv"]
+[ext_resource type="Texture2D" uid="uid://ba5r0u0280f0g" path="res://game/content/entities/lemon_hand.png" id="4_ne7sr"]
+[ext_resource type="Script" uid="uid://vhgwe3d64oji" path="res://addons/first_party/components/spawning/launcher/resources/launcher_direction_stats_fixed.gd" id="4_o3tkb"]
+[ext_resource type="AudioStream" uid="uid://cavn3ahqx7jtt" path="res://game/content/sounds/player_jump.wav" id="5_jump"]
+[ext_resource type="AudioStream" uid="uid://27ocp4s06did" path="res://game/content/sounds/player_hit.wav" id="6_hurt"]
+[ext_resource type="AudioStream" uid="uid://b3jtjmxghcbul" path="res://game/content/sounds/player_died.wav" id="7_death"]
+[ext_resource type="AudioStream" uid="uid://4bdx0mok5gkw" path="res://game/content/sounds/player_reload.wav" id="8_reload"]
+[ext_resource type="AudioStream" uid="uid://cs3lpffa785bg" path="res://game/content/sounds/player_land.wav" id="9_land"]
+
+[sub_resource type="Resource" id="Resource_ne7sr"]
+script = ExtResource("4_o3tkb")
+vector = Vector2(-1, 0)
+metadata/_custom_type_script = "uid://vhgwe3d64oji"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ne7sr"]
+radius = 49.0408
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3tkb"]
+radius = 81.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3xtuv"]
+radius = 74.02702
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oov76"]
+radius = 200.0
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("juice_box", "hurt_area", "interaction_area", "hurdle_cast", "danger_area", "hand", "gun", "body_sprite")]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_xfnnr")
+juice_box = NodePath("juice_box")
+hurt_area = NodePath("body_anchor/hurt_area")
+interaction_area = NodePath("body_anchor/interaction_area")
+hurdle_cast = NodePath("hurdle_cast")
+danger_area = NodePath("danger_area")
+hand = NodePath("body_anchor/hand_anchor")
+gun = NodePath("body_anchor/hand_anchor/hand_sprite/bullet_spawn_point/bullet_spawner")
+body_sprite = NodePath("body_anchor/body_sprite")
+
+[node name="juice_box" type="Node" parent="." node_paths=PackedStringArray("player", "body_sprite")]
+script = ExtResource("1_jcbox")
+player = NodePath("..")
+body_sprite = NodePath("../body_anchor/body_sprite")
+jump_sound = ExtResource("5_jump")
+land_sound = ExtResource("9_land")
+hurt_sound = ExtResource("6_hurt")
+death_sound = ExtResource("7_death")
+reload_sound = ExtResource("8_reload")
+
+[node name="body_anchor" type="Node2D" parent="."]
+
+[node name="body_sprite" type="Sprite2D" parent="body_anchor"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_o3tkb")
+
+[node name="face_sprite" type="Sprite2D" parent="body_anchor/body_sprite"]
+texture = ExtResource("3_o3tkb")
+
+[node name="hand_anchor" type="Node2D" parent="body_anchor"]
+
+[node name="hand_sprite" type="Sprite2D" parent="body_anchor/hand_anchor"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ne7sr")
+offset = Vector2(220, 0)
+
+[node name="bullet_spawn_point" type="Node2D" parent="body_anchor/hand_anchor/hand_sprite"]
+position = Vector2(300, -10)
+scale = Vector2(2, 2)
+
+[node name="bullet_spawner" type="Node2D" parent="body_anchor/hand_anchor/hand_sprite/bullet_spawn_point"]
+script = ExtResource("3_rigkb")
+projectile_speed = 2000.0
+shots_per_second = 6.0
+max_projectiles = 9
+remaining_projectiles = 3
+launch_limits = 1
+launch_direction_data = SubResource("Resource_ne7sr")
+scene_to_spawn = ExtResource("4_3xtuv")
+position_mode = 1
+metadata/_custom_type_script = "uid://cvw1h24app67s"
+
+[node name="hurt_area" type="Area2D" parent="body_anchor"]
+collision_layer = 128
+collision_mask = 1280
+
+[node name="collision_shape" type="CollisionShape2D" parent="body_anchor/hurt_area"]
+shape = SubResource("CircleShape2D_ne7sr")
+
+[node name="interaction_area" type="Area2D" parent="body_anchor"]
+collision_layer = 128
+collision_mask = 2048
+
+[node name="collision_shape" type="CollisionShape2D" parent="body_anchor/interaction_area"]
+shape = SubResource("CircleShape2D_o3tkb")
+
+[node name="body_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3xtuv")
+
+[node name="hurdle_cast" type="RayCast2D" parent="."]
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(0, 10000)
+collision_mask = 16
+hit_from_inside = true
+
+[node name="danger_area" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 16
+
+[node name="collision_shape" type="CollisionShape2D" parent="danger_area"]
+shape = SubResource("CircleShape2D_oov76")
+
+[connection signal="area_entered" from="body_anchor/hurt_area" to="." method="_on_hurt_area_area_entered"]
+[connection signal="area_entered" from="body_anchor/interaction_area" to="." method="_on_interaction_area_area_entered"]
+[connection signal="body_entered" from="danger_area" to="." method="_on_danger_area_body_entered"]
+[connection signal="body_exited" from="danger_area" to="." method="_on_danger_area_body_exited"]

@@ -1,0 +1,264 @@
+[gd_scene load_steps=21 format=3 uid="uid://cbx6w3pdk33od"]
+
+[ext_resource type="PackedScene" uid="uid://nk87mh6jmt03" path="res://game/content/objects/bat_origin_point.tscn" id="1_atetp"]
+[ext_resource type="Script" uid="uid://1kvjoguiok7d" path="res://game/content/contexts/play_context/level_juice_box.gd" id="1_lvljb"]
+[ext_resource type="Script" uid="uid://bptx4skp3v31v" path="res://game/content/contexts/play_context/level.gd" id="1_uo75i"]
+[ext_resource type="PackedScene" uid="uid://crpi2bpr2rxdp" path="res://game/content/entities/player.tscn" id="1_vmuml"]
+[ext_resource type="PackedScene" uid="uid://duj0wkdme7t8a" path="res://game/content/objects/bat_zone.tscn" id="2_2gfjl"]
+[ext_resource type="Texture2D" uid="uid://ctm2k2sqrdr1" path="res://addons/first_party/assets/basic_2d_assets/objects/apple/apple_filled.png" id="3_8oqmp"]
+[ext_resource type="PackedScene" uid="uid://dkbgapvgw23w8" path="res://game/content/entities/bat_level_1.tscn" id="3_syacv"]
+[ext_resource type="Texture2D" uid="uid://c3oi7rl43gamt" path="res://addons/first_party/assets/basic_2d_assets/polygons/diamond/diamond_light.png" id="3_ua5gn"]
+[ext_resource type="PackedScene" uid="uid://c3wp56f3tg4xe" path="res://game/content/entities/bat_level_2.tscn" id="4_2gfjl"]
+[ext_resource type="PackedScene" uid="uid://bvnwyp4kru0xn" path="res://game/content/entities/bat_level_3.tscn" id="5_1nfpk"]
+[ext_resource type="Script" uid="uid://c8qpfjdb5e6f3" path="res://game/content/ui/ammo_ui.gd" id="8_1nfpk"]
+[ext_resource type="PackedScene" uid="uid://ddy74gke24lw1" path="res://game/content/ui/shell_ui.tscn" id="9_30a7l"]
+[ext_resource type="Script" uid="uid://dws8evo8mdjed" path="res://game/content/contexts/play_context/game_camera.gd" id="10_t57g8"]
+
+[sub_resource type="Gradient" id="Gradient_dust_life"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(0.6, 0.85, 0.7, 0, 0.6, 0.85, 0.7, 0.25, 0.6, 0.85, 0.7, 0.25, 0.6, 0.85, 0.7, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dust_life"]
+gradient = SubResource("Gradient_dust_life")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dust"]
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_box_extents = Vector3(1100, 460, 1)
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 6.0
+initial_velocity_max = 18.0
+angular_velocity_min = -10.000016
+angular_velocity_max = 9.999984
+gravity = Vector3(0, -4, 0)
+scale_min = 0.03
+scale_max = 1.4
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 2.0
+color_ramp = SubResource("GradientTexture1D_dust_life")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y4lkp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kk8uc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_atetp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo75i"]
+
+[node name="base_game_scene" type="Node2D" node_paths=PackedStringArray("timer", "spawn_points", "score_label", "juice_box")]
+script = ExtResource("1_uo75i")
+timer = NodePath("spawn_timer")
+spawn_points = [NodePath("gameplay_layer/world/top_left_spawn"), NodePath("gameplay_layer/world/middle_left_spawn"), NodePath("gameplay_layer/world/bottom_left_spawn"), NodePath("gameplay_layer/world/top_right_spawn"), NodePath("gameplay_layer/world/middle_right_spawn"), NodePath("gameplay_layer/world/bottom_right_spawn")]
+score_label = NodePath("background_layer/score_label")
+juice_box = NodePath("juice_box")
+
+[node name="juice_box" type="Node" parent="." node_paths=PackedStringArray("flash_rect")]
+script = ExtResource("1_lvljb")
+flash_rect = NodePath("../hud_layer/flash_rect")
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="background_layer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="background_canvas" type="Control" parent="background_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background_color" type="ColorRect" parent="background_layer/background_canvas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -0.2
+anchor_right = 1.2
+anchor_bottom = 1.2
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.023529412, 0.13333334, 0.08235294, 1)
+
+[node name="bg" type="TextureRect" parent="background_layer/background_canvas"]
+modulate = Color(0.011764706, 0.101960786, 0.0627451, 0.50980395)
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ua5gn")
+stretch_mode = 1
+
+[node name="floor_color" type="ColorRect" parent="background_layer/background_canvas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = 1.0
+anchor_right = 1.2
+anchor_bottom = 1.2
+offset_top = -197.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.32156864, 0.4392157, 0.37166053, 1)
+
+[node name="score_label" type="Label" parent="background_layer"]
+modulate = Color(1, 1, 1, 0.0627451)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 600
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="space_particles" type="GPUParticles2D" parent="background_layer"]
+visible = false
+modulate = Color(0.007217407, 0.0859375, 0.049388897, 1)
+position = Vector2(960, 420)
+amount = 120
+texture = ExtResource("3_8oqmp")
+lifetime = 10.0
+preprocess = 10.0
+randomness = 0.5
+visibility_rect = Rect2(-1250, -800, 2500, 1500)
+process_material = SubResource("ParticleProcessMaterial_dust")
+
+[node name="gameplay_layer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="world" type="Node2D" parent="gameplay_layer"]
+
+[node name="floor_collider" type="StaticBody2D" parent="gameplay_layer/world"]
+position = Vector2(0, 880)
+collision_mask = 1544
+
+[node name="collision_shape" type="CollisionShape2D" parent="gameplay_layer/world/floor_collider"]
+shape = SubResource("WorldBoundaryShape2D_y4lkp")
+
+[node name="left_wall_collider" type="StaticBody2D" parent="gameplay_layer/world"]
+collision_layer = 2
+collision_mask = 1544
+
+[node name="collision_shape" type="CollisionShape2D" parent="gameplay_layer/world/left_wall_collider"]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_kk8uc")
+
+[node name="right_wall_collider" type="StaticBody2D" parent="gameplay_layer/world"]
+position = Vector2(1920, 0)
+collision_layer = 2
+collision_mask = 1544
+
+[node name="collision_shape" type="CollisionShape2D" parent="gameplay_layer/world/right_wall_collider"]
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_atetp")
+
+[node name="ceiling_collider" type="StaticBody2D" parent="gameplay_layer/world"]
+collision_layer = 4
+collision_mask = 1544
+
+[node name="collision_shape" type="CollisionShape2D" parent="gameplay_layer/world/ceiling_collider"]
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_uo75i")
+
+[node name="left_bat_zone" parent="gameplay_layer/world" instance=ExtResource("2_2gfjl")]
+
+[node name="right_bat_zone" parent="gameplay_layer/world" instance=ExtResource("2_2gfjl")]
+position = Vector2(2220, 0)
+
+[node name="top_left_spawn" parent="gameplay_layer/world" instance=ExtResource("1_atetp")]
+position = Vector2(-600, 200)
+level_1_bat_scene = ExtResource("3_syacv")
+level_2_bat_scene = ExtResource("4_2gfjl")
+level_3_bat_scene = ExtResource("5_1nfpk")
+direction = Vector2(1, 0)
+
+[node name="middle_left_spawn" parent="gameplay_layer/world" instance=ExtResource("1_atetp")]
+position = Vector2(-600, 500)
+level_1_bat_scene = ExtResource("3_syacv")
+level_2_bat_scene = ExtResource("4_2gfjl")
+level_3_bat_scene = ExtResource("5_1nfpk")
+direction = Vector2(1, 0)
+
+[node name="bottom_left_spawn" parent="gameplay_layer/world" instance=ExtResource("1_atetp")]
+position = Vector2(-600, 800)
+level_1_bat_scene = ExtResource("3_syacv")
+level_2_bat_scene = ExtResource("4_2gfjl")
+level_3_bat_scene = ExtResource("5_1nfpk")
+direction = Vector2(1, 0)
+
+[node name="top_right_spawn" parent="gameplay_layer/world" instance=ExtResource("1_atetp")]
+position = Vector2(2520, 200)
+level_1_bat_scene = ExtResource("3_syacv")
+level_2_bat_scene = ExtResource("4_2gfjl")
+level_3_bat_scene = ExtResource("5_1nfpk")
+direction = Vector2(-1, 0)
+
+[node name="middle_right_spawn" parent="gameplay_layer/world" instance=ExtResource("1_atetp")]
+position = Vector2(2520, 500)
+level_1_bat_scene = ExtResource("3_syacv")
+level_2_bat_scene = ExtResource("4_2gfjl")
+level_3_bat_scene = ExtResource("5_1nfpk")
+direction = Vector2(-1, 0)
+
+[node name="bottom_right_spawn" parent="gameplay_layer/world" instance=ExtResource("1_atetp")]
+position = Vector2(2520, 800)
+level_1_bat_scene = ExtResource("3_syacv")
+level_2_bat_scene = ExtResource("4_2gfjl")
+level_3_bat_scene = ExtResource("5_1nfpk")
+direction = Vector2(-1, 0)
+
+[node name="player" parent="gameplay_layer" instance=ExtResource("1_vmuml")]
+position = Vector2(480, 270)
+
+[node name="hud_layer" type="CanvasLayer" parent="."]
+
+[node name="screen" type="Control" parent="hud_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ammo_ui" type="HBoxContainer" parent="hud_layer/screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+alignment = 1
+script = ExtResource("8_1nfpk")
+shell_scene = ExtResource("9_30a7l")
+
+[node name="flash_rect" type="ColorRect" parent="hud_layer"]
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -0.2
+anchor_right = 1.2
+anchor_bottom = 1.2
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9609375, 0.24398804, 0.24398804, 0)
+
+[node name="game_camera" type="Camera2D" parent="." node_paths=PackedStringArray("juice_box")]
+position = Vector2(929, -938)
+limit_left = -50
+limit_right = 1970
+script = ExtResource("10_t57g8")
+enhanced_zoom = Vector2(1.1, 1.1)
+juice_box = NodePath("../juice_box")
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
