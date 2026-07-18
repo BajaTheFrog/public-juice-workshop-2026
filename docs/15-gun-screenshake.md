@@ -37,7 +37,7 @@ The method should now read:
 3. Fire away! It should make the kickback of the gun feel real without being too distracting. 
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-3.2.1`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

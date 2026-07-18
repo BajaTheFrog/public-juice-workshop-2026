@@ -46,7 +46,7 @@ The method should now read:
    touchdown.
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-1.2.2`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

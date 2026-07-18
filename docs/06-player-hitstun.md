@@ -38,7 +38,7 @@ The method should now read:
 3. Get hit (or run into) a bat and clock the stop!
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-2.1.1`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

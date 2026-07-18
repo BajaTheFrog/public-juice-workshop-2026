@@ -43,7 +43,7 @@ The method should now read:
 3. Hold down **Left Mouse Button** and aim wherever and check it out!
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-2.2.2`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

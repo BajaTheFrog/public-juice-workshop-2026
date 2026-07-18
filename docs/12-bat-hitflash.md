@@ -92,7 +92,7 @@ class Feedback:
 3. Shoot a bat **Left Mouse Button** and notice what happens when your shots connect!
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-2.2.3`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

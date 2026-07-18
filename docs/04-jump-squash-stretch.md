@@ -58,7 +58,7 @@ landings can't fight over the sprite's scale.
 3. Jump with **W** and watch the lemon flatten, stretch, and settle.
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-1.2.1`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

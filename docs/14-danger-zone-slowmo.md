@@ -38,7 +38,7 @@ The method should now read:
 3. Let a bat get close and see how the playback speed of the game changes at different distances to a threat!
 <br>
 <br>
-> [!IMPORTANT HELP] 
+> [!IMPORTANT]  
 >
 > Git command to auto-complete this step: `git checkout step-3.1.2`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.
