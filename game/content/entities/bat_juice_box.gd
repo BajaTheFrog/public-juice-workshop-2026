@@ -44,7 +44,8 @@ class Feedback:
 			return
 
 		# [STEP-2.2.C]: Flash the entire bat to emphasize hit contact
-		pass
+		var hit_flash_time: float = 0.02
+		await _async_flash(_box, _box.hit_flash_sprites, hit_flash_time)
 
 
 	func async_on_died() -> void:

@@ -31,7 +31,7 @@ class Feedback:
 			return
 
 		# [STEP-2.2.A]: Increase the size of the bullet (seed) so its more prominent
-		pass
+		_box.body.scale *= 2.0
 
 
 	func _async_muzzle_flash() -> void:
@@ -39,7 +39,13 @@ class Feedback:
 			return
 
 		# [STEP-2.2.B]: Add muzzle flash to communicate bullet (seed) exit
-		pass
+		var muzzle_flash_time: float = 0.05
+		var random_x_scale = Random.randf_range(0.7, 1.2)
+		var random_y_scale = Random.randf_range(0.5, 1.1)
+
+		_box.muzzle_sprite.scale = Vector2(random_x_scale, random_y_scale)
+
+		await _async_flash(_box, _box.muzzle_sprite, muzzle_flash_time)
 
 
 	func async_on_impact() -> void:

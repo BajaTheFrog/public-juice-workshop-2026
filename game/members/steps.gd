@@ -69,9 +69,9 @@ var _supported: Dictionary = {
 	SHOOT_SPREAD: true,      # [STEP-2.1.D] Shoot Spread
 
 	# --- Exercise 2.2 - Interactions / Feedback ---
-	BIGGER_BULLETS: false,   # [STEP-2.2.A] Bigger Bullets
-	MUZZLE_FLASH: false,     # [STEP-2.2.B] Muzzle Flash
-	BAT_HIT_FLASH: false,    # [STEP-2.2.C] Bat Hitflash
+	BIGGER_BULLETS: true,    # [STEP-2.2.A] Bigger Bullets
+	MUZZLE_FLASH: true,      # [STEP-2.2.B] Muzzle Flash
+	BAT_HIT_FLASH: true,     # [STEP-2.2.C] Bat Hitflash
 
 	# --- Exercise 3.1 - Camera & Time / Kinetics ---
 	CAMERA_TRACKING: false,  # [STEP-3.1.A] Dynamic Tracking
