@@ -50,7 +50,8 @@ The method should now read:
 3. Shoot a bat with the toggle on and off and see if you can sense the subtle difference.
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-2.1.2`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

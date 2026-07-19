@@ -53,7 +53,8 @@ func play_sfx(stream: AudioStream, pitch_variance: float = 0.0) -> void:
 3. Jump, shoot, hurdle a bat, get hit — wow! It helps! Who could have guessed?
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-4.1.1`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

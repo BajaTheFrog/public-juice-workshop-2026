@@ -59,7 +59,8 @@ The method should now read:
 3. Try rolling with **A** / **D** when the setting is on and off. Feel the difference!
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]
 >
 > Git command to auto-complete this step: `git checkout step-1.1.1`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

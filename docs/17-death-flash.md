@@ -62,7 +62,8 @@ The method should now read:
 3. Die.
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-3.2.3`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

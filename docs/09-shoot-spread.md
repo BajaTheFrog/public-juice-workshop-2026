@@ -57,7 +57,8 @@ The method should now read:
 3. Hold down **Left Mouse Button** and aim wherever. As you toggle the setting on and off you should notice how the spread of the bullet changes. 
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-2.1.4`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

@@ -65,7 +65,8 @@ The method should now read:
    sluggish and you have to plan the jump; with it off, you can fly around freely.
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-1.1.3`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

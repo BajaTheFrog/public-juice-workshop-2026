@@ -57,7 +57,8 @@ only boost gravity on the way *down*.
 3. Jump with **W** and see how the drop feels when this change is turned on and off. 
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-1.1.2`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.

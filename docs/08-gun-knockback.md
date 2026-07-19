@@ -57,7 +57,8 @@ Importantly, our `kinetics` lets `player` actually handle the subtleties of appl
 3. Hold down **Left Mouse Button** and aim wherever. You should be able to feel the knockback pretty clearly and see how it impacts movement. 
 <br>
 <br>
-> [!IMPORTANT]  
+
+> [!TIP]  
 >
 > Git command to auto-complete this step: `git checkout step-2.1.3`.
 > See [Git Help & FAQ](25-appendix-git-help.md) for help.
