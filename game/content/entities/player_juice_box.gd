@@ -35,11 +35,11 @@ class Kinetics:
 
 		if Steps.check(_box, Steps.ACCELERATION):
 			# [STEP-1.1.A]: Ease into top speed so the ball carries weight
-			pass
+			value = _player.acceleration
 
 		if Steps.check(_box, Steps.AIR_DAMPENING) and is_in_air:
 			# [STEP-1.1.C]: Give up some control in the air
-			pass
+			value *= _player.air_dampening_mult
 
 		return value
 
@@ -49,7 +49,7 @@ class Kinetics:
 			return 1.0
 
 		# [STEP-1.1.B]: Fall faster than we rise
-		return 1.0
+		return _player.fall_gravity_mult if velocity_y > 0 else 1.0
 
 
 	func get_shoot_angle(base_degrees: float) -> float:

@@ -54,9 +54,9 @@ const SAVE_SECTION = "steps"
 # whole block from false -> true and its effects appear in the Juice menu (J).
 var _supported: Dictionary = {
 	# --- Exercise 1.1 - Movement / Kinetics ---
-	ACCELERATION: false,     # [STEP-1.1.A] Acceleration
-	JUMP_GRAVITY: false,     # [STEP-1.1.B] Jump / Fall Gravity
-	AIR_DAMPENING: false,    # [STEP-1.1.C] Air Control / Dampening
+	ACCELERATION: true,      # [STEP-1.1.A] Acceleration
+	JUMP_GRAVITY: true,      # [STEP-1.1.B] Jump / Fall Gravity
+	AIR_DAMPENING: true,     # [STEP-1.1.C] Air Control / Dampening
 
 	# --- Exercise 1.2 - Movement / Feedback ---
 	JUMP_SQUASH: false,      # [STEP-1.2.A] Jump Squash + Stretch
