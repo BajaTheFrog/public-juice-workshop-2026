@@ -49,6 +49,30 @@ const SOUND_ON = "sound_on"
 const SAVE_PATH = "user://juice_steps.cfg"
 const SAVE_SECTION = "steps"
 
+# We register all steps up front but we only show _supported_ ones in the menu
+# for each step that gets implemented, this dictionary should also get the appropriate key
+# marked as true.
+var _supported: Dictionary = {
+	ACCELERATION: false,     # [STEP-1.1.1]
+	JUMP_GRAVITY: false,     # [STEP-1.1.2]
+	AIR_DAMPENING: false,    # [STEP-1.1.3]
+	JUMP_SQUASH: false,      # [STEP-1.2.1]
+	LAND_SQUASH: false,      # [STEP-1.2.2]
+	DEATH_HITSTUN: false,    # [STEP-2.1.1]
+	BAT_HITSTOP: false,      # [STEP-2.1.2]
+	SHOOT_KNOCKBACK: false,  # [STEP-2.1.3]
+	SHOOT_SPREAD: false,     # [STEP-2.1.4]
+	BIGGER_BULLETS: false,   # [STEP-2.2.1]
+	MUZZLE_FLASH: false,     # [STEP-2.2.2]
+	BAT_HIT_FLASH: false,    # [STEP-2.2.3]
+	CAMERA_TRACKING: false,  # [STEP-3.1.1]
+	DANGER_SLOWMO: false,    # [STEP-3.1.2]
+	SHOOT_SHAKE: false,      # [STEP-3.2.1]
+	DEATH_SHAKE: false,      # [STEP-3.2.2]
+	SCREEN_FLASH: false,     # [STEP-3.2.3]
+	SOUND_ON: false,         # [STEP-4.1.1]
+}
+
 var _definitions: Array[StepDefinition] = []
 var _enabled: Dictionary = {}
 
@@ -166,22 +190,27 @@ func disable_all() -> void:
 	set_all(false)
 
 
+# Is this step visible in the menu yet? Unlisted ids default to hidden.
+func is_supported(id: StringName) -> bool:
+	return _supported.get(id, false)
+
+
 func get_definitions() -> Array[StepDefinition]:
-	return _definitions
+	return _definitions.filter(func(definition): return is_supported(definition.id))
 
 
 func get_definitions_in_sequence() -> Array[StepDefinition]:
-	var definitions: Array[StepDefinition] = _definitions.duplicate()
+	var definitions: Array[StepDefinition] = get_definitions()
 	definitions.sort_custom(func(a, b): return a.order < b.order)
 	return definitions
 
 
 func get_definitions_for_moment(moment: String) -> Array[StepDefinition]:
-	return _definitions.filter(func(definition): return definition.moment == moment)
+	return _definitions.filter(func(definition): return is_supported(definition.id) and definition.moment == moment)
 
 
 func get_definitions_for_type(type: String) -> Array[StepDefinition]:
-	return _definitions.filter(func(definition): return definition.type == type)
+	return _definitions.filter(func(definition): return is_supported(definition.id) and definition.type == type)
 
 
 func get_moments() -> Array[String]:

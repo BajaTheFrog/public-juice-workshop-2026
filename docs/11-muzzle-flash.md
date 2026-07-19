@@ -6,13 +6,31 @@ A muzzle flash punctuates and confirms to the player that the gun fired and thei
 
 (This is also where haptics are a great solution!)
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.2.2]` to find comments tied to this step. 
+
+### FIRST: Enable `MUZZLE_FLASH` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`MUZZLE_FLASH`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		MUZZLE_FLASH: true,      # [STEP-2.2.2]
+		...
+	}
+```
+
+### SECOND: Add a muzzle flash on firing
 - **FILE**: `game/content/objects/player_bullet_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `_async_muzzle_flash()`
-- **COMMENT**: `# [STEP-2.2.2]`
 
-## The changes
 Another gem of advice from _Art of the Screenshake_, you can get a very cheap muzzle flash effect but just including it in with the bullet sprite and very quickly turning it on before disabling it. 
 
 If nothing else it is a great place to start. 

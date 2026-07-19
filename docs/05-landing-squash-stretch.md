@@ -7,13 +7,31 @@ Always pat attention to the opportunity to keep actions and reactions balanced a
 
 You want the landing to feel different and proportional. So we'll do another type of squash but give it a slightly different treatment. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-1.2.2]` to find comments tied to this step. 
+
+### FIRST: Enable `LAND_SQUASH` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`LAND_SQUASH`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		LAND_SQUASH: true,       # [STEP-1.2.2]
+		...
+	}
+```
+
+### SECOND: Squash on landing
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `on_landed()`
-- **COMMENT**: `# [STEP-1.2.2]`
 
-### The changes
 More Tween action awaits. 
 
 We'll create a `tween` and define another squash scale. We want it to feel a little stiffer (a quick punch) on landing compared to a jump (which has kind of a wind-up), so we keep the values closer to `1.0`. 

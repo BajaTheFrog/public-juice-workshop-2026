@@ -6,13 +6,31 @@ One of the clearest example of the importance of Kinetics is how a jump _feels_.
 
 It turns out that a jump that rises and falls with the same gravity feels floaty. So we're going to use a classic trick: fall faster than we go up!
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-1.1.2]` to find comments tied to this step. 
+
+### FIRST: Enable `JUMP_GRAVITY` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`JUMP_GRAVITY`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		JUMP_GRAVITY: true,      # [STEP-1.1.2]
+		...
+	}
+```
+
+### SECOND: Modify the force of gravity on fall
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `get_gravity_scale()`
-- **COMMENT**: `# [STEP-1.1.2]`
 
-### The Change
 This is also a nice and easy change. 
 
 1. Without our change, we always return a gravity scale of `1.0`, which means it is constant. 

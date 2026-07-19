@@ -8,13 +8,31 @@ So that's what we will do with our shot angle. We're gonna nudge the trajectory 
 
 Sorry hitscan lovers. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.1.4]` to find comments tied to this step. 
+
+### FIRST: Enable `SHOOT_SPREAD` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`SHOOT_SPREAD`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		SHOOT_SPREAD: true,      # [STEP-2.1.4]
+		...
+	}
+```
+
+### SECOND: Add some variance on shoot angle
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `get_shoot_angle()`
-- **COMMENT**: `# [STEP-2.1.4]`
 
-## The changes
 Normally we just return whatever angle in degrees has been passed into this function. 
 
 Now we can get a random value between our min (`-_player.shoot_vector_bump`) and our max (`_player.shoot_vector_bump`). 

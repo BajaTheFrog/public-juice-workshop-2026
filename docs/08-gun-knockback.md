@@ -8,13 +8,31 @@ We're going to give our gun(?) some knockback when we fire it. It makes it feel 
 
 Also it unlocks some cool movement tech in the air.
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.1.3]` to find comments tied to this step. 
+
+### FIRST: Enable `SHOOT_KNOCKBACK` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`SHOOT_KNOCKBACK`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		SHOOT_KNOCKBACK: true,   # [STEP-2.1.3]
+		...
+	}
+```
+
+### SECOND: Apply knockback on gun firing
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `apply_knockback()`
-- **COMMENT**: `# [STEP-2.1.3]`
 
-## The changes
 This is another area where we won't implement the details of the code but can take a look. 
 
 The idea is simple though: we get the position of where the bullet is coming from and apply some velocity in the opposite direction. That velocity gets spun down over time so we can recover from it. 

@@ -4,13 +4,31 @@ _**Part 2: Interactions · Kinetics · 2.1.2 — 👹 Hitstun**_
 
 Same idea as the last module, but for the enemy. Helping the player understand when their attacks are landing or missing is super important to making the player understand the action and rules of the world. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.1.2]` to find comments tied to this step. 
+
+### FIRST: Enable `BAT_HITSTOP` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`BAT_HITSTOP`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		BAT_HITSTOP: true,       # [STEP-2.1.2]
+		...
+	}
+```
+
+### SECOND: Freeze time very quickly when a bat is hit
 - **FILE**: `game/content/entities/bat_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `async_hitstop()`
-- **COMMENT**: `# [STEP-2.1.2]`
 
-## The changes
 Virtually the same. We choose a much shorter hitstop here because we want to keep the action moving, we want to stop _just_ enough to register the impact. 
 
 The method should now read:

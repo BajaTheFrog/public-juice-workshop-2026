@@ -6,13 +6,31 @@ Once the only type of **Juice** the indie community seemed to know about, we fin
 
 We're going to start by applying just a _touch_ of it on every player shot to further drive home the power of the gun and make players feel that action. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-3.2.1]` to find comments tied to this step. 
+
+### FIRST: Enable `SHOOT_SHAKE` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`SHOOT_SHAKE`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		SHOOT_SHAKE: true,       # [STEP-3.2.1]
+		...
+	}
+```
+
+### SECOND: Shake the screen on gun shot
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `on_shot()`
-- **COMMENT**: `# [STEP-3.2.1]`
 
-## The changes
 As with handling time scaling, we have a special pre-defined manager for screenshake. But we pick an amplitude (how _much_ it shakes) and a time (how _long_ it shakes) and let it rip.
 
 Choose modest values here to start, you don't want to make someone sick because they shot too much with a lot of shake!

@@ -6,13 +6,31 @@ Often times you will hear people describe great moments of focus or intense acti
 
 Well we can help make time _literally_ slow down in tense moments too! This will enhance that experience and make a player super attuned to how close they are to dying!
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-3.1.2]` to find comments tied to this step. 
+
+### FIRST: Enable `DANGER_SLOWMO` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`DANGER_SLOWMO`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		DANGER_SLOWMO: true,     # [STEP-3.1.2]
+		...
+	}
+```
+
+### SECOND: When in danger, slow time down
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `on_danger_changed()`
-- **COMMENT**: `# [STEP-3.1.2]`
 
-## The changes
 We have some other logic that is tracking bats and how close they are to measure danger. 
 
 Our logic here is to slow down time _more_ the closer the nearest bat is, and speed it back up as we get away. By doing this with a `lerp` (the older cousin of a `Tween`) we can make the transition between time scales _super_ smooth. 

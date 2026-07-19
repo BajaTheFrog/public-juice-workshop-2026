@@ -8,13 +8,31 @@ I find screenflashes to also be the kind of thing that on paper seems like overk
 
 We'll get a brief edge-to-edge flash of color to decisively punctuate the end LeMon's life. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-3.2.3]` to find comments tied to this step. 
+
+### FIRST: Enable `SCREEN_FLASH` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`SCREEN_FLASH`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		SCREEN_FLASH: true,      # [STEP-3.2.3]
+		...
+	}
+```
+
+### SECOND: Flash the screen on death
 - **FILE**: `game/content/contexts/play_context/level_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `async_on_player_died()`
-- **COMMENT**: `# [STEP-3.2.3]`
 
-## The changes
 Fitting we should end with another `tween`! After all it's one of the best tools in the biz. 
 
 We'll pick a `flash_time` and `flash_alpha` (how opaque is the flash) and set them appropriately. A helpful callout here: we'll use `tween.set_ignore_time_scale()` to ensure a slowed-down time_scale doesn't mean a slowed down hit flash. 

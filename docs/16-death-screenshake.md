@@ -9,13 +9,31 @@ In this case, we are shaking the screen from dying super hard. We want no ambigu
 LeMon is dead and you killed him. 
 You should make the player really sit with that. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-3.2.2]` to find comments tied to this step. 
+
+### FIRST: Enable `DEATH_SHAKE` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`DEATH_SHAKE`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		DEATH_SHAKE: true,       # [STEP-3.2.2]
+		...
+	}
+```
+
+### SECOND: Shake the screen on death, big time
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `on_hit()`
-- **COMMENT**: `# [STEP-3.2.2]`
 
-## The changes
 Same shape of change as the last module but 10x the shake and 2x the duration.
 
 The method should now read:

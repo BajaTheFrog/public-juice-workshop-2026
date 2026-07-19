@@ -3,16 +3,34 @@
 _**Part 4: Sound · Feedback · 4.1.1 — 🔊 Sound**_
 Sound is just as important as `tweens` and `screenshake` and hitflases! 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-4.1.1]` to find comments tied to this step. 
+
+### FIRST: Enable `SOUND_ON` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`SOUND_ON`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		SOUND_ON: true,          # [STEP-4.1.1]
+		...
+	}
+```
+
+### SECOND: Unlock the sound effects
 
 Unlike every other step, this one is **not** in a juice box — it's the one global
 switch that unlocks all of them.
 
 - **FILE**: `game/services/sound_service.gd`
 - **FUNCTION**: `play_sfx()`
-- **COMMENT**: `# [STEP-4.1.1]`
 
-## The changes
 Unlock the sounds 👍.
 
 The top of the method should now read:

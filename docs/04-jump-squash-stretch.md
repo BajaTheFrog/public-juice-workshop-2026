@@ -11,13 +11,31 @@ We'll give the jump a little more life by squashing it down (like loading a spri
 We snap it back to imply some elasticity (probably more than a lemon should have but it's a style choice!)
 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-1.2.1]` to find comments tied to this step. 
+
+### FIRST: Enable `JUMP_SQUASH` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`JUMP_SQUASH`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		JUMP_SQUASH: true,       # [STEP-1.2.1]
+		...
+	}
+```
+
+### SECOND: Squash & stretch on takeoff
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `on_jump_takeoff()`
-- **COMMENT**: `# [STEP-1.2.1]`
 
-### The change
 An essential tactic (squash and stretch) paired with an essential Godot feature. _The Tween_. 
 
 Tweens are an incredibly powerful tool, super easy to use, and at the heart of _lots_ of juicy effects. Some people are saying "all of them."

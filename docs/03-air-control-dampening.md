@@ -6,13 +6,31 @@ While it will make sense for some games, we're going to change how in-air moveme
 
 We're going to "dampen" our acceleration while in air so that you can nudge your position but not fly. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-1.1.3]` to find comments tied to this step. 
+
+### FIRST: Enable `AIR_DAMPENING` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`AIR_DAMPENING`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		AIR_DAMPENING: true,     # [STEP-1.1.3]
+		...
+	}
+```
+
+### SECOND: Dampen control while airborne
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `get_acceleration()`
-- **COMMENT**: `# [STEP-1.1.3]`
 
-### The Change
 Close enough, welcome back `get_acceleration()`. 
 
 This time we are going to take advantage of `is_in_air`. 

@@ -6,13 +6,31 @@ Pairing nicely with a hitstop is a _hitflash_. This is visual confirmation that 
 
 And like the muzzle flash, its as simple as turning on a sprite for a moment before turning it off again. 
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.2.3]` to find comments tied to this step. 
+
+### FIRST: Enable `BAT_HIT_FLASH` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`BAT_HIT_FLASH`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		BAT_HIT_FLASH: true,     # [STEP-2.2.3]
+		...
+	}
+```
+
+### SECOND: Flash the bat to indicate damage
 - **FILE**: `game/content/entities/bat_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `async_on_hit()` (and add a new `_async_flash()` helper)
-- **COMMENT**: `# [STEP-2.2.3]`
 
-## The changes
 For reasons lost to me, we're going to also implement the flash logic. Luckily - it is very simple. 
 
 What is not captured in the code is that we can get the "full white sprite" effect by using a shader that fully colors a sprite one color. I'm not a shader head but there are lots of good examples out there and is very simple to implement!

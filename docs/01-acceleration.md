@@ -7,14 +7,30 @@ Sometimes - that _is_ actually what you want! It is not inherently wrong. In our
 
 We will introduce acceleration to create a feeling of weight and momentum.
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-1.1.1]` to find comments tied to this step. 
+
+### FIRST: Enable `ACCELERATION` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`ACCELERATION`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		ACCELERATION: true,      # [STEP-1.1.1]
+		...
+	}
+```
+
+### SECOND: Add acceleration to movement
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `get_acceleration()`
-- **COMMENT**: `# [STEP-1.1.1]`
-
-### The Change
-We're starting off nice and easy. 
 
 1. `value` gets set to `_player.speed` which happens to be the _max speed_. So there is nothing to build up to, we are just already there. 
 2. All we are going to do is overwrite `value` with the `_player.acceleration`. This is a lower value that will compound over time until we get to our max speed. 

@@ -8,13 +8,31 @@ In practice, when used carefully, the stop communicates to the player that there
 
 We're going to start with a hitstop on LeMon.
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.1.1]` to find comments tied to this step. 
+
+### FIRST: Enable `DEATH_HITSTUN` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`DEATH_HITSTUN`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		DEATH_HITSTUN: true,     # [STEP-2.1.1]
+		...
+	}
+```
+
+### SECOND: Freeze time when the player gets hit (and dies)
 - **FILE**: `game/content/entities/player_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `async_hitstun()`
-- **COMMENT**: `# [STEP-2.1.1]`
 
-## The changes
 We're not going to write any of the stoppage code (but we can take a look). Instead we are just going to call some pre-built logic to do so.
 
 And that's it!

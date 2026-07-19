@@ -15,13 +15,31 @@ JW specifically says "...your bullets should be about the size of your chest."
 
 Again, this is going to make more sense for some styles of games than others, but the point is to lean into the important pieces of your particular game and draw attention to them.
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-2.2.1]` to find comments tied to this step. 
+
+### FIRST: Enable `BIGGER_BULLETS` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`BIGGER_BULLETS`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		BIGGER_BULLETS: true,    # [STEP-2.2.1]
+		...
+	}
+```
+
+### SECOND: Bullet BIG
 - **FILE**: `game/content/objects/player_bullet_juice_box.gd`
 - **CLASS**: `Feedback`
 - **FUNCTION**: `_apply_bigger_bullet()`
-- **COMMENT**: `# [STEP-2.2.1]`
 
-## The changes
 Dead simple change that is only a code-change for consistency with the rest of the group. We just up the scale. 
 
 The method should now read:

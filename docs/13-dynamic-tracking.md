@@ -8,13 +8,31 @@ But even a simple game like this can be invigorated with some gentle camera move
 
 We'll do this in our game by adding tracking to the player movement.
 
-## Where to go
+## Step Changes
+
+> [!TIP]
+> 
+> Search `[STEP-3.1.1]` to find comments tied to this step. 
+
+### FIRST: Enable `CAMERA_TRACKING` support
+
+- **FILE**: `game/members/steps.gd`
+- **DICTIONARY**: `_supported`
+
+Flip **`CAMERA_TRACKING`** from `false` → `true`
+```gdscript
+	var _supported: Dictionary = {
+		...
+		CAMERA_TRACKING: true,   # [STEP-3.1.1]
+		...
+	}
+```
+
+### SECOND: Track the player with the camera
 - **FILE**: `game/content/contexts/play_context/level_juice_box.gd`
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `track_camera()`
-- **COMMENT**: `# [STEP-3.1.1]`
 
-## The changes
 In this case we have already written the code to do the work in `_track_player_with_camera`, so we can just call it!
 
 The method should now read:
