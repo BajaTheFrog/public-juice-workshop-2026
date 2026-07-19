@@ -63,10 +63,10 @@ var _supported: Dictionary = {
 	LAND_SQUASH: true,       # [STEP-1.2.B] Landing Squash + Stretch
 
 	# --- Exercise 2.1 - Interactions / Kinetics ---
-	DEATH_HITSTUN: false,    # [STEP-2.1.A] Player Hitstun
-	BAT_HITSTOP: false,      # [STEP-2.1.B] Bat Hitstun
-	SHOOT_KNOCKBACK: false,  # [STEP-2.1.C] Gun Knockback
-	SHOOT_SPREAD: false,     # [STEP-2.1.D] Shoot Spread
+	DEATH_HITSTUN: true,     # [STEP-2.1.A] Player Hitstun
+	BAT_HITSTOP: true,       # [STEP-2.1.B] Bat Hitstun
+	SHOOT_KNOCKBACK: true,   # [STEP-2.1.C] Gun Knockback
+	SHOOT_SPREAD: true,      # [STEP-2.1.D] Shoot Spread
 
 	# --- Exercise 2.2 - Interactions / Feedback ---
 	BIGGER_BULLETS: false,   # [STEP-2.2.A] Bigger Bullets

@@ -57,7 +57,7 @@ class Kinetics:
 			return base_degrees
 
 		# [STEP-2.1.D]: Randomize the exit trajectory a bit
-		return base_degrees
+		return base_degrees + Random.randf_range(-_player.shoot_vector_bump, _player.shoot_vector_bump)
 
 
 	func apply_knockback(gun: Launcher2D) -> void:
@@ -65,7 +65,7 @@ class Kinetics:
 			return
 
 		# [STEP-2.1.C]: Every shot shoves us off it
-		pass
+		_player.apply_knockback(gun.global_position, _player.knockback_amount)
 
 
 	func async_hitstun() -> void:
@@ -73,7 +73,8 @@ class Kinetics:
 			return
 
 		# [STEP-2.1.A]: Stun the body to drive home what happened to the player
-		pass
+		var hitstun_time: float = 0.75
+		await Game.async_stop(hitstun_time)
 
 
 	func on_danger_changed(closeness: float) -> void:

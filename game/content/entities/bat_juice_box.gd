@@ -26,7 +26,8 @@ class Kinetics:
 			return
 
 		# [STEP-2.1.B]: Briefly freeze the whole world to emphasize hit contact
-		pass
+		var hitstop_time: float = 0.05
+		await Game.async_stop(hitstop_time)
 
 
 class Feedback:
