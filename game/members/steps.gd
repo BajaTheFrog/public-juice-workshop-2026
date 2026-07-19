@@ -49,28 +49,41 @@ const SOUND_ON = "sound_on"
 const SAVE_PATH = "user://juice_steps.cfg"
 const SAVE_SECTION = "steps"
 
-# We register all steps up front but we only show _supported_ ones in the menu
-# for each step that gets implemented, this dictionary should also get the appropriate key
-# marked as true.
+# We register all steps up front but we only show _supported_ ones in the menu.
+# Each block below is one workshop exercise. When you start an exercise, flip that
+# whole block from false -> true and its effects appear in the Juice menu (J).
 var _supported: Dictionary = {
-	ACCELERATION: false,     # [STEP-1.1.1]
-	JUMP_GRAVITY: false,     # [STEP-1.1.2]
-	AIR_DAMPENING: false,    # [STEP-1.1.3]
-	JUMP_SQUASH: false,      # [STEP-1.2.1]
-	LAND_SQUASH: false,      # [STEP-1.2.2]
-	DEATH_HITSTUN: false,    # [STEP-2.1.1]
-	BAT_HITSTOP: false,      # [STEP-2.1.2]
-	SHOOT_KNOCKBACK: false,  # [STEP-2.1.3]
-	SHOOT_SPREAD: false,     # [STEP-2.1.4]
-	BIGGER_BULLETS: false,   # [STEP-2.2.1]
-	MUZZLE_FLASH: false,     # [STEP-2.2.2]
-	BAT_HIT_FLASH: false,    # [STEP-2.2.3]
-	CAMERA_TRACKING: false,  # [STEP-3.1.1]
-	DANGER_SLOWMO: false,    # [STEP-3.1.2]
-	SHOOT_SHAKE: false,      # [STEP-3.2.1]
-	DEATH_SHAKE: false,      # [STEP-3.2.2]
-	SCREEN_FLASH: false,     # [STEP-3.2.3]
-	SOUND_ON: false,         # [STEP-4.1.1]
+	# --- Exercise 1.1 - Movement / Kinetics ---
+	ACCELERATION: false,     # [STEP-1.1.A] Acceleration
+	JUMP_GRAVITY: false,     # [STEP-1.1.B] Jump / Fall Gravity
+	AIR_DAMPENING: false,    # [STEP-1.1.C] Air Control / Dampening
+
+	# --- Exercise 1.2 - Movement / Feedback ---
+	JUMP_SQUASH: false,      # [STEP-1.2.A] Jump Squash + Stretch
+	LAND_SQUASH: false,      # [STEP-1.2.B] Landing Squash + Stretch
+
+	# --- Exercise 2.1 - Interactions / Kinetics ---
+	DEATH_HITSTUN: false,    # [STEP-2.1.A] Player Hitstun
+	BAT_HITSTOP: false,      # [STEP-2.1.B] Bat Hitstun
+	SHOOT_KNOCKBACK: false,  # [STEP-2.1.C] Gun Knockback
+	SHOOT_SPREAD: false,     # [STEP-2.1.D] Shoot Spread
+
+	# --- Exercise 2.2 - Interactions / Feedback ---
+	BIGGER_BULLETS: false,   # [STEP-2.2.A] Bigger Bullets
+	MUZZLE_FLASH: false,     # [STEP-2.2.B] Muzzle Flash
+	BAT_HIT_FLASH: false,    # [STEP-2.2.C] Bat Hitflash
+
+	# --- Exercise 3.1 - Camera & Time / Kinetics ---
+	CAMERA_TRACKING: false,  # [STEP-3.1.A] Dynamic Tracking
+	DANGER_SLOWMO: false,    # [STEP-3.1.B] Danger Zone Slowmo
+
+	# --- Exercise 3.2 - Camera & Time / Feedback ---
+	SHOOT_SHAKE: false,      # [STEP-3.2.A] Gun Screenshake
+	DEATH_SHAKE: false,      # [STEP-3.2.B] Death Screenshake
+	SCREEN_FLASH: false,     # [STEP-3.2.C] Death Flash
+
+	# --- Exercise 4.1 - Sound / Feedback ---
+	SOUND_ON: false,         # [STEP-4.1.A] Sound
 }
 
 var _definitions: Array[StepDefinition] = []
@@ -103,37 +116,39 @@ static func check(component: Component, step: String) -> bool:
 
 func _ready() -> void:
 	# Registration order drives sequence order. Tags are P.T.E breadcrumbs
-	# (Part.Type.Element) that match the [STEP] comments in code.
+	# (Part.Type.Element) that match the [STEP] comments in code. The Part.Type
+	# pair is one workshop exercise; the Element letter is one effect inside it.
+	# So searching [STEP-1.1 finds a whole exercise, [STEP-1.1.B] finds one effect.
 	# --- Part 1: Movement ---
-	# --- KINETICS
-	_register(ACCELERATION, "1.1.1", "🍋 Acceleration", TYPE_KINETICS, MOMENT_PHYSICS, "player_juice_box.gd")
-	_register(JUMP_GRAVITY, "1.1.2", "🍋 Jump / Fall Gravity", TYPE_KINETICS, MOMENT_PHYSICS, "player_juice_box.gd")
-	_register(AIR_DAMPENING, "1.1.3", "🍋 Air Control / Dampening", TYPE_KINETICS, MOMENT_PHYSICS, "player_juice_box.gd")
-	# --- FEEDBACK
-	_register(JUMP_SQUASH, "1.2.1", "🍋 Jump Squash + Stretch", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
-	_register(LAND_SQUASH, "1.2.2", "🍋 Landing Squash + Stretch", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
+	# --- KINETICS (Exercise 1.1)
+	_register(ACCELERATION, "1.1.A", "🍋 Acceleration", TYPE_KINETICS, MOMENT_PHYSICS, "player_juice_box.gd")
+	_register(JUMP_GRAVITY, "1.1.B", "🍋 Jump / Fall Gravity", TYPE_KINETICS, MOMENT_PHYSICS, "player_juice_box.gd")
+	_register(AIR_DAMPENING, "1.1.C", "🍋 Air Control / Dampening", TYPE_KINETICS, MOMENT_PHYSICS, "player_juice_box.gd")
+	# --- FEEDBACK (Exercise 1.2)
+	_register(JUMP_SQUASH, "1.2.A", "🍋 Jump Squash + Stretch", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
+	_register(LAND_SQUASH, "1.2.B", "🍋 Landing Squash + Stretch", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
 	# --- Part 2: Interactions ---
-	# --- KINETICS
-	_register(DEATH_HITSTUN, "2.1.1", "🍋 Hitstun", TYPE_KINETICS, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
-	_register(BAT_HITSTOP, "2.1.2", "👹 Hitstun", TYPE_KINETICS, MOMENT_BAT_LIFECYCLE, "bat_juice_box.gd")
-	_register(SHOOT_KNOCKBACK, "2.1.3", "🍋 Gun Knockback", TYPE_KINETICS, MOMENT_BULLET_LIFECYCLE, "player_juice_box.gd")
-	_register(SHOOT_SPREAD, "2.1.4", "🍋 Shoot Spread", TYPE_KINETICS, MOMENT_OTHER, "player_juice_box.gd")
-	# --- FEEDBACK
-	_register(BIGGER_BULLETS, "2.2.1", "🍋 Bigger Bullets", TYPE_FEEDBACK, MOMENT_OTHER, "player_bullet_juice_box.gd")
-	_register(MUZZLE_FLASH, "2.2.2", "🍋 Muzzle Flash", TYPE_FEEDBACK, MOMENT_BULLET_LIFECYCLE, "player_bullet_juice_box.gd")
-	_register(BAT_HIT_FLASH, "2.2.3", "👹 Hitflash", TYPE_FEEDBACK, MOMENT_BAT_LIFECYCLE, "bat_juice_box.gd")
+	# --- KINETICS (Exercise 2.1)
+	_register(DEATH_HITSTUN, "2.1.A", "🍋 Hitstun", TYPE_KINETICS, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
+	_register(BAT_HITSTOP, "2.1.B", "👹 Hitstun", TYPE_KINETICS, MOMENT_BAT_LIFECYCLE, "bat_juice_box.gd")
+	_register(SHOOT_KNOCKBACK, "2.1.C", "🍋 Gun Knockback", TYPE_KINETICS, MOMENT_BULLET_LIFECYCLE, "player_juice_box.gd")
+	_register(SHOOT_SPREAD, "2.1.D", "🍋 Shoot Spread", TYPE_KINETICS, MOMENT_OTHER, "player_juice_box.gd")
+	# --- FEEDBACK (Exercise 2.2)
+	_register(BIGGER_BULLETS, "2.2.A", "🍋 Bigger Bullets", TYPE_FEEDBACK, MOMENT_OTHER, "player_bullet_juice_box.gd")
+	_register(MUZZLE_FLASH, "2.2.B", "🍋 Muzzle Flash", TYPE_FEEDBACK, MOMENT_BULLET_LIFECYCLE, "player_bullet_juice_box.gd")
+	_register(BAT_HIT_FLASH, "2.2.C", "👹 Hitflash", TYPE_FEEDBACK, MOMENT_BAT_LIFECYCLE, "bat_juice_box.gd")
 	# --- Part 3: Camera and Time ---
-	# --- KINETICS
-	_register(CAMERA_TRACKING, "3.1.1", "📺 Dynamic Tracking", TYPE_KINETICS, MOMENT_OTHER, "level_juice_box.gd")
-	_register(DANGER_SLOWMO, "3.1.2", "⏰ Danger Zone Slowmo", TYPE_KINETICS, MOMENT_OTHER, "player_juice_box.gd")
-	# --- FEEDBACK
-	_register(SHOOT_SHAKE, "3.2.1", "📺 Gun Screenshake", TYPE_FEEDBACK, MOMENT_OTHER, "player_juice_box.gd")
-	_register(DEATH_SHAKE, "3.2.2", "📺 Death Screenshake", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
-	_register(SCREEN_FLASH, "3.2.3", "📺 Death Flash", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "level_juice_box.gd")
+	# --- KINETICS (Exercise 3.1)
+	_register(CAMERA_TRACKING, "3.1.A", "📺 Dynamic Tracking", TYPE_KINETICS, MOMENT_OTHER, "level_juice_box.gd")
+	_register(DANGER_SLOWMO, "3.1.B", "⏰ Danger Zone Slowmo", TYPE_KINETICS, MOMENT_OTHER, "player_juice_box.gd")
+	# --- FEEDBACK (Exercise 3.2)
+	_register(SHOOT_SHAKE, "3.2.A", "📺 Gun Screenshake", TYPE_FEEDBACK, MOMENT_OTHER, "player_juice_box.gd")
+	_register(DEATH_SHAKE, "3.2.B", "📺 Death Screenshake", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "player_juice_box.gd")
+	_register(SCREEN_FLASH, "3.2.C", "📺 Death Flash", TYPE_FEEDBACK, MOMENT_PLAYER_LIFECYCLE, "level_juice_box.gd")
 	# --- Part 4: Sound ---
-	# --- FEEDBACK
+	# --- FEEDBACK (Exercise 4.1)
 	# One global switch: flip this on to bring every juice box's SFX to life at once.
-	_register(SOUND_ON, "4.1.1", "🔊 Sound", TYPE_FEEDBACK, MOMENT_OTHER, "*_juice_box.gd")
+	_register(SOUND_ON, "4.1.A", "🔊 Sound", TYPE_FEEDBACK, MOMENT_OTHER, "*_juice_box.gd")
 
 
 	_load_enabled_states()

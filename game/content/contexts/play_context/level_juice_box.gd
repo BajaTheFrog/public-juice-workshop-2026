@@ -27,8 +27,26 @@ class Kinetics:
 				camera.zoom = camera.standard_zoom
 			return
 
-		# [STEP-3.1.1]: Track the player's position with the camera
+		# [STEP-3.1.A]: Track the player's position with the camera
 		pass
+
+
+	# Pre-written for you. Eases the camera toward the player and zooms in a little.
+	# Exercise 3.1.A is just about calling it - but read it if you're curious.
+	func _track_player_with_camera(camera: GameCamera, camera_center: Vector2) -> void:
+		if camera.zoom == camera.standard_zoom:
+			camera.zoom = camera.enhanced_zoom
+
+		var player_pos: Vector2 = Game.services.entity.get_player_location()
+		if player_pos == Vector2.INF:
+			return
+
+		var arena_ratio := player_pos / 1920.0
+		var translated_position := arena_ratio * Vector2(1920.0, 1080.0)
+		player_pos = translated_position
+
+		var scaled_delta := (player_pos - camera_center) * 0.1
+		camera.global_position = camera_center + scaled_delta
 
 
 class Feedback:
@@ -42,5 +60,5 @@ class Feedback:
 		if not Steps.check(_box, Steps.SCREEN_FLASH):
 			return
 
-		# [STEP-3.2.3]: Full-screen flash to drive impact of death
+		# [STEP-3.2.C]: Full-screen flash to drive impact of death
 		pass

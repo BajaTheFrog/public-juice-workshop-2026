@@ -34,11 +34,11 @@ class Kinetics:
 		var value := _player.speed
 
 		if Steps.check(_box, Steps.ACCELERATION):
-			# [STEP-1.1.1]: Ease into top speed so the ball carries weight
+			# [STEP-1.1.A]: Ease into top speed so the ball carries weight
 			pass
 
 		if Steps.check(_box, Steps.AIR_DAMPENING) and is_in_air:
-			# [STEP-1.1.3]: Give up some control in the air
+			# [STEP-1.1.C]: Give up some control in the air
 			pass
 
 		return value
@@ -48,7 +48,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.JUMP_GRAVITY):
 			return 1.0
 
-		# [STEP-1.1.2]: Fall faster than we rise
+		# [STEP-1.1.B]: Fall faster than we rise
 		return 1.0
 
 
@@ -56,7 +56,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.SHOOT_SPREAD):
 			return base_degrees
 
-		# [STEP-2.1.4]: Randomize the exit trajectory a bit
+		# [STEP-2.1.D]: Randomize the exit trajectory a bit
 		return base_degrees
 
 
@@ -64,7 +64,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.SHOOT_KNOCKBACK):
 			return
 
-		# [STEP-2.1.3]: Every shot shoves us off it
+		# [STEP-2.1.C]: Every shot shoves us off it
 		pass
 
 
@@ -72,7 +72,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.DEATH_HITSTUN):
 			return
 
-		# [STEP-2.1.1]: Stun the body to drive home what happened to the player
+		# [STEP-2.1.A]: Stun the body to drive home what happened to the player
 		pass
 
 
@@ -81,7 +81,7 @@ class Kinetics:
 			Game.services.time.clear_sustained_time(Game.messages.time.danger_zone)
 			return
 
-		# [STEP-3.1.2]: As the immediate danger to the player increases, we can slow time
+		# [STEP-3.1.B]: As the immediate danger to the player increases, we can slow time
 		pass
 
 
@@ -107,7 +107,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.LAND_SQUASH):
 			return
 
-		# [STEP-1.2.2]: Squash on landing to communicate impact
+		# [STEP-1.2.B]: Squash on landing to communicate impact
 		pass
 
 
@@ -117,7 +117,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.JUMP_SQUASH):
 			return
 
-		# [STEP-1.2.1]: "Animate" the jump takeoff with some classic squash and stretch
+		# [STEP-1.2.A]: "Animate" the jump takeoff with some classic squash and stretch
 		pass
 
 
@@ -125,7 +125,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.SHOOT_SHAKE):
 			return
 
-		# [STEP-3.2.1]: Make the "gun" feel more powerful with screenshake
+		# [STEP-3.2.A]: Make the "gun" feel more powerful with screenshake
 		pass
 
 
@@ -135,7 +135,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.DEATH_SHAKE):
 			return
 
-		# [STEP-3.2.2]: Shake the camera on death
+		# [STEP-3.2.B]: Shake the camera on death
 		pass
 
 

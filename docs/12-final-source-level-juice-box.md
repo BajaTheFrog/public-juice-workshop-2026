@@ -1,6 +1,6 @@
 # Final Source — `level_juice_box.gd`
 
-The complete `level_juice_box.gd` file after **every** level step is done.
+The complete `level_juice_box.gd` file after **every** level exercise is done.
 
 
 ```gdscript
@@ -33,10 +33,12 @@ class Kinetics:
 				camera.zoom = camera.standard_zoom
 			return
 
-		# [STEP-3.1.1]: Track the player's position with the camera
+		# [STEP-3.1.A]: Track the player's position with the camera
 		_track_player_with_camera(camera, camera_center)
 
 
+	# Pre-written for you. Eases the camera toward the player and zooms in a little.
+	# Exercise 3.1.A is just about calling it - but read it if you're curious.
 	func _track_player_with_camera(camera: GameCamera, camera_center: Vector2) -> void:
 		if camera.zoom == camera.standard_zoom:
 			camera.zoom = camera.enhanced_zoom
@@ -64,7 +66,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.SCREEN_FLASH):
 			return
 
-		# [STEP-3.2.3]: Full-screen flash to drive impact of death
+		# [STEP-3.2.C]: Full-screen flash to drive impact of death
 		var flash_time: float = 0.1
 		var flash_alpha: float = 1.0
 
@@ -77,4 +79,4 @@ class Feedback:
 
 ## 🍎 🍉 🍊 🍋 🍍 🥝 🫐 🍇
 
-### [← Final Source — `player_bullet_juice_box.gd`](22-final-source-player-bullet-juice-box.md) | [Table of Contents](00-contents.md) | [Final Source — `sound_service.gd` →](24-final-source-sound-service.md)
+### [← Final Source — `player_bullet_juice_box.gd`](11-final-source-player-bullet-juice-box.md) | [Table of Contents](00-contents.md) | [Final Source — `sound_service.gd` →](13-final-source-sound-service.md)

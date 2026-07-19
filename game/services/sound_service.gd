@@ -44,7 +44,7 @@ func _build_sfx_pool() -> void:
 
 
 func play_sfx(stream: AudioStream, pitch_variance: float = 0.0) -> void:
-	# [STEP-4.1.1]: Unlock sounds so they can play!
+	# [STEP-4.1.A]: Unlock sounds so they can play!
 	var unlocked_sounds = false
 	if not Game.steps.on(Steps.SOUND_ON):
 		return

@@ -2,7 +2,7 @@
 
 There are approximately one _billion_ articles, videos and tweets about Juice. Every game dev content creator has something about it.
 
-But if you want the most bang for you buck - I would call these the _essential texts_ on the subject. 
+But if you want the most bang for your buck - I would call these the _essential texts_ on the subject. 
 
 ## [Game Feel — Steve Swink](http://www.game-feel.com/)
 ![alt text](image.png)
@@ -44,10 +44,10 @@ While not about Juice _specifically_, this Godot Tween Guide is one of the best 
 
 An _extremely_ cool interactive guide to `Tweens` in Godot by a developer and artist named: [Christophe](https://qaqelol.itch.io/). 
 
-Hard to think of a better way to display the ease, power and versitility of the tool that will help you "10x the Juice in your game" as the YouTube thumbnails like to say. 
+Hard to think of a better way to display the ease, power and versatility of the tool that will help you "10x the Juice in your game" as the YouTube thumbnails like to say. 
 
 🔗 **[Godot Tween Guide by Christophe](https://qaqelol.itch.io/tweens)**
 
 ## 🍎 🍉 🍊 🍋 🍍 🥝 🫐 🍇
 
-### [← Appendix — Git Help & FAQ](25-appendix-git-help.md) | [Table of Contents](00-contents.md)
+### [← Appendix — Git Help & FAQ](14-appendix-git-help.md) | [Table of Contents](00-contents.md)

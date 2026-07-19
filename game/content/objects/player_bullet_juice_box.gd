@@ -30,7 +30,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.BIGGER_BULLETS):
 			return
 
-		# [STEP-2.2.1]: Increase the size of the bullet (seed) so its more prominent
+		# [STEP-2.2.A]: Increase the size of the bullet (seed) so its more prominent
 		pass
 
 
@@ -38,7 +38,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.MUZZLE_FLASH):
 			return
 
-		# [STEP-2.2.2]: Add muzzle flash to communicate bullet (seed) exit
+		# [STEP-2.2.B]: Add muzzle flash to communicate bullet (seed) exit
 		pass
 
 

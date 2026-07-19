@@ -1,6 +1,6 @@
 # Final Source — `player_juice_box.gd`
 
-The complete `player_juice_box.gd` file after **every** player step is done.
+The complete `player_juice_box.gd` file after **every** player exercise is done.
 
 ```gdscript
 extends Component
@@ -39,11 +39,11 @@ class Kinetics:
 		var value := _player.speed
 
 		if Steps.check(_box, Steps.ACCELERATION):
-			# [STEP-1.1.1]: Ease into top speed so the ball carries weight
+			# [STEP-1.1.A]: Ease into top speed so the ball carries weight
 			value = _player.acceleration
 
 		if Steps.check(_box, Steps.AIR_DAMPENING) and is_in_air:
-			# [STEP-1.1.3]: Give up some control in the air
+			# [STEP-1.1.C]: Give up some control in the air
 			value *= _player.air_dampening_mult
 
 		return value
@@ -53,7 +53,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.JUMP_GRAVITY):
 			return 1.0
 
-		# [STEP-1.1.2]: Fall faster than we rise
+		# [STEP-1.1.B]: Fall faster than we rise
 		return _player.fall_gravity_mult if velocity_y > 0 else 1.0
 
 
@@ -61,7 +61,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.SHOOT_SPREAD):
 			return base_degrees
 
-		# [STEP-2.1.4]: Randomize the exit trajectory a bit
+		# [STEP-2.1.D]: Randomize the exit trajectory a bit
 		return base_degrees + Random.randf_range(-_player.shoot_vector_bump, _player.shoot_vector_bump)
 
 
@@ -69,7 +69,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.SHOOT_KNOCKBACK):
 			return
 
-		# [STEP-2.1.3]: Every shot shoves us off it
+		# [STEP-2.1.C]: Every shot shoves us off it
 		_player.apply_knockback(gun.global_position, _player.knockback_amount)
 
 
@@ -77,7 +77,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.DEATH_HITSTUN):
 			return
 
-		# [STEP-2.1.1]: Stun the body to drive home what happened to the player
+		# [STEP-2.1.A]: Stun the body to drive home what happened to the player
 		var hitstun_time: float = 0.75
 		await Game.async_stop(hitstun_time)
 
@@ -87,7 +87,7 @@ class Kinetics:
 			Game.services.time.clear_sustained_time(Game.messages.time.danger_zone)
 			return
 
-		# [STEP-3.1.2]: As the immediate danger to the player increases, we can slow time
+		# [STEP-3.1.B]: As the immediate danger to the player increases, we can slow time
 		Game.services.time.set_sustained_time(Game.messages.time.danger_zone, _player, lerpf(1.0, 0.2, closeness))
 
 
@@ -113,7 +113,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.LAND_SQUASH):
 			return
 
-		# [STEP-1.2.2]: Squash on landing to communicate impact
+		# [STEP-1.2.B]: Squash on landing to communicate impact
 		var squash_amount: Vector2 = Vector2(1.2, 0.8)
 		var squash_time: float = 0.06
 		var recover_time: float = 0.06
@@ -129,7 +129,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.JUMP_SQUASH):
 			return
 
-		# [STEP-1.2.1]: "Animate" the jump takeoff with some classic squash and stretch
+		# [STEP-1.2.A]: "Animate" the jump takeoff with some classic squash and stretch
 		var squash_amount: Vector2 = Vector2(1.5, 0.5)
 		var stretch_amount: Vector2 = Vector2(0.75, 1.25)
 		var squash_time: float = 0.1
@@ -146,7 +146,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.SHOOT_SHAKE):
 			return
 
-		# [STEP-3.2.1]: Make the "gun" feel more powerful with screenshake
+		# [STEP-3.2.A]: Make the "gun" feel more powerful with screenshake
 		var shake_amplitude: float = 8.0
 		var shake_time: float = 0.25
 		Game.services.camera.add_shake(shake_amplitude, shake_time)
@@ -158,7 +158,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.DEATH_SHAKE):
 			return
 
-		# [STEP-3.2.2]: Shake the camera on death
+		# [STEP-3.2.B]: Shake the camera on death
 		var shake_amplitude: float = 80.0
 		var shake_time: float = 0.5
 
@@ -172,7 +172,7 @@ class Feedback:
 	func on_reloaded() -> void:
 		Game.services.sound.play_sfx(_box.reload_sound)
 
-	## The squash tweens all drive body_sprite.scale, so only one may be live at a time.
+
 	func _restart_body_tween() -> Tween:
 		if _body_tween and _body_tween.is_valid():
 			_body_tween.kill()
@@ -184,4 +184,4 @@ class Feedback:
 
 ## 🍎 🍉 🍊 🍋 🍍 🥝 🫐 🍇
 
-### [← Appendix — The Juice Menu](19-appendix-juice-menu.md) | [Table of Contents](00-contents.md) | [Final Source — `bat_juice_box.gd` →](21-final-source-bat-juice-box.md)
+### [← Appendix — The Juice Menu](08-appendix-juice-menu.md) | [Table of Contents](00-contents.md) | [Final Source — `bat_juice_box.gd` →](10-final-source-bat-juice-box.md)

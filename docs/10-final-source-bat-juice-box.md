@@ -1,6 +1,6 @@
 # Final Source — `bat_juice_box.gd`
 
-The complete `bat_juice_box.gd` file after **every** bat step is done.
+The complete `bat_juice_box.gd` file after **every** bat exercise is done.
 
 
 ```gdscript
@@ -31,7 +31,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.BAT_HITSTOP):
 			return
 
-		# [STEP-2.1.2]: Briefly freeze the whole world to emphasize hit contact
+		# [STEP-2.1.B]: Briefly freeze the whole world to emphasize hit contact
 		var hitstop_time: float = 0.05
 		await Game.async_stop(hitstop_time)
 
@@ -49,7 +49,7 @@ class Feedback:
 		if not Steps.check(_box, Steps.BAT_HIT_FLASH):
 			return
 
-		# [STEP-2.2.3]: Flash the entire bat to emphasize hit contact
+		# [STEP-2.2.C]: Flash the entire bat to emphasize hit contact
 		var hit_flash_time: float = 0.02
 		await _async_flash(_box, _box.hit_flash_sprites, hit_flash_time)
 
@@ -58,6 +58,8 @@ class Feedback:
 		pass
 
 
+	# Pre-written for you. Shows a set of sprites, waits, then hides them again.
+	# Exercise 2.2.C is just about calling it - but read it if you're curious.
 	func _async_flash(node: Node, sprites: Array[Sprite2D], duration: float) -> void:
 		for sprite in sprites:
 			sprite.visible = true
@@ -70,4 +72,4 @@ class Feedback:
 
 ## 🍎 🍉 🍊 🍋 🍍 🥝 🫐 🍇
 
-### [← Final Source — `player_juice_box.gd`](20-final-source-player-juice-box.md) | [Table of Contents](00-contents.md) | [Final Source — `player_bullet_juice_box.gd` →](22-final-source-player-bullet-juice-box.md)
+### [← Final Source — `player_juice_box.gd`](09-final-source-player-juice-box.md) | [Table of Contents](00-contents.md) | [Final Source — `player_bullet_juice_box.gd` →](11-final-source-player-bullet-juice-box.md)

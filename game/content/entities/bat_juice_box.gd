@@ -25,7 +25,7 @@ class Kinetics:
 		if not Steps.check(_box, Steps.BAT_HITSTOP):
 			return
 
-		# [STEP-2.1.2]: Briefly freeze the whole world to emphasize hit contact
+		# [STEP-2.1.B]: Briefly freeze the whole world to emphasize hit contact
 		pass
 
 
@@ -42,9 +42,21 @@ class Feedback:
 		if not Steps.check(_box, Steps.BAT_HIT_FLASH):
 			return
 
-		# [STEP-2.2.3]: Flash the entire bat to emphasize hit contact
+		# [STEP-2.2.C]: Flash the entire bat to emphasize hit contact
 		pass
 
 
 	func async_on_died() -> void:
 		pass
+
+
+	# Pre-written for you. Shows a set of sprites, waits, then hides them again.
+	# Exercise 2.2.C is just about calling it - but read it if you're curious.
+	func _async_flash(node: Node, sprites: Array[Sprite2D], duration: float) -> void:
+		for sprite in sprites:
+			sprite.visible = true
+
+		await Wait.on(node, duration).timeout
+
+		for sprite in sprites:
+			sprite.visible = false

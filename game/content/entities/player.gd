@@ -7,11 +7,11 @@ class_name Player
 @export var jump_height: float = 510.0
 ## How long the rise takes. Lower is snappier and cuts float at the apex.
 @export_range(0.05, 2.0, 0.01) var time_to_apex: float = 0.5
-## [STEP-1.1.1]: How fast we reach top speed. Lower carries more weight.
+## [STEP-1.1.A]: How fast we reach top speed. Lower carries more weight.
 @export var acceleration: float = 40.0
-## [STEP-1.1.2]: How much faster we fall than we rise.
+## [STEP-1.1.B]: How much faster we fall than we rise.
 @export var fall_gravity_mult: float = 1.7
-## [STEP-1.1.3]: How much horizontal control we give up while airborne.
+## [STEP-1.1.C]: How much horizontal control we give up while airborne.
 @export var air_dampening_mult: float = 0.7
 ## How much of our speed we keep when we rebound off a wall.
 @export_range(0.0, 1.0, 0.05) var wall_bounce_mult: float = 0.45
@@ -38,7 +38,7 @@ var _hurdled_objects: Array = []
 @export var ammo_max = 10
 @export var knockback_amount: float = 400.0
 @export var knockback_decay: float = 10.0
-## [STEP-2.1.4]: Degrees of spread on each shot.
+## [STEP-2.1.D]: Degrees of spread on each shot.
 @export var shoot_vector_bump: float = 5.0
 
 var _is_shooting = false

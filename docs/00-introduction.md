@@ -22,7 +22,7 @@ It's not super fun? I mean maybe that's because the design itself isn't great.
 But we're not going to focus on game design or mechanics today - those will go unchanged. 
 
 This workshop is all about _**JUICE**_. 
-A magical somewhat catch-all word that means a lot of different things to a lot of diferrent people. 
+A magical somewhat catch-all word that means a lot of different things to a lot of different people. 
 
 We're gonna bring this game to life a little more by **juicing** it to hell and back. 
 
@@ -43,14 +43,14 @@ We're gonna bring this game to life a little more by **juicing** it to hell and 
 
 **Juice** turns the players _input_ into _expressive output_ that communicates to the player what is happening in the game. Juice isn't just style without substance: _it's essential user interaction design_. Also, it's fun!
 
-In this workshop we are going to break **Juice** down into 2 families (at the risk of everyone yelling at me):
+In this workshop we are going to break **Juice** down into 2 component types (at the risk of everyone yelling at me):
 
 - **KINETICS** — *how the world, time, entities and objects move.* 
   - **In other words: Do I like how this jump feels or not?**
   - The physics and input processing that change the
   motion itself: acceleration, gravity, knockback, hitstun, slow-motion, camera
   tracking etc. **Kinetics** changes how your game **feels**. 
-  - **Kinetics** really need to be experienced first-hand (as a player) to be understood and can be felt with primative shapes and flat colors.
+  - **Kinetics** really need to be experienced first-hand (as a player) to be understood and can be felt with primitive shapes and flat colors.
 - **FEEDBACK** — *how actions, updates, changes and information are expressed.* 
   - **In other words: Does the jump look and sound engaging?**
   - The (mostly) audio-visual flourishes layered on
@@ -65,21 +65,38 @@ Inversely you can have a game that _looks and sounds_ great but feels awkward or
 When we have strong **Kinetics** and strong **Feedback**, we have strong **Juice**!
 
 
+## How this guide is organized
+
+**7 exercises across 4 parts.** Parts 1–3 each pair a **Kinetics** exercise with a **Feedback** exercise; Part 4 is a single **Feedback** exercise that switches on sound.
+
+Each exercise bundles a few related effects as its **A**, **B**, **C**... sections — so Exercise `1.1` contains effects `1.1.A`, `1.1.B` and `1.1.C`. In the code you'll find matching `# [STEP-1.1.A]` comments marking the exact lines to change.
+
+| Search this | To find |
+| --- | --- |
+| `[STEP-1.1` | every line in exercise 1.1 |
+| `[STEP-1.1.<LETTER>]` | the `<LETTER>` step |
+
+A couple of things worth knowing:
+
+- **Each exercise starts by flipping a block of `_supported` flags** in `game/members/steps.gd` from `false` to `true`. That's what makes those effects appear in the Juice menu.
+- **The Juice menu lists all 18 effects individually**, not the 7 exercises. You write them in groups; you toggle them one at a time.
+- **Every exercise has a git tag** (`git checkout step-1.1`) if you get stuck or want to skip ahead.
+
 ## Reference
 
 - **[Table of Contents](00-contents.md)** — the map of every page in this guide. Go
   here if you get lost.
-- **[Appendix — The Juice Menu](19-appendix-juice-menu.md)** — the debug menu's
+- **[Appendix — The Juice Menu](08-appendix-juice-menu.md)** — the debug menu's
   features and how to use it.
-- **[Appendix — Git Help & FAQ](25-appendix-git-help.md)** — in case you need a hand.
-- **[Appendix — More Resources](26-appendix-more-resources.md)** — talks, a book, and docs to go deeper.
+- **[Appendix — Git Help & FAQ](14-appendix-git-help.md)** — in case you need a hand.
+- **[Appendix — More Resources](15-appendix-more-resources.md)** — talks, a book, and docs to go deeper.
 - **Final source files** — the complete, finished version of every file you edit if you get stuck or want to double check. 
-  - [player_juice_box.gd](20-final-source-player-juice-box.md)
-  - [bat_juice_box.gd](21-final-source-bat-juice-box.md)
-  - [player_bullet_juice_box.gd](22-final-source-player-bullet-juice-box.md) 
-  - [level_juice_box.gd](23-final-source-level-juice-box.md)
-  - [sound_service.gd](24-final-source-sound-service.md)
+  - [player_juice_box.gd](09-final-source-player-juice-box.md)
+  - [bat_juice_box.gd](10-final-source-bat-juice-box.md)
+  - [player_bullet_juice_box.gd](11-final-source-player-bullet-juice-box.md) 
+  - [level_juice_box.gd](12-final-source-level-juice-box.md)
+  - [sound_service.gd](13-final-source-sound-service.md)
 
 ## 🍎 🍉 🍊 🍋 🍍 🥝 🫐 🍇
 
-### [← 🍋 Your Game is a Lemon — JUICE IT 🍋](../README.md) | [Table of Contents](00-contents.md) | [Part 1 — Movement →](00.1-part-1-movement.md)
+### [← 🍋 Your Game is a Lemon — JUICE IT 🍋](../README.md) | [Table of Contents](00-contents.md) | [Part 1 — 🍋 Player Movement →](00.1-part-1-movement.md)
