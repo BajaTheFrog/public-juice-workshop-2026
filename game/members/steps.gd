@@ -74,8 +74,8 @@ var _supported: Dictionary = {
 	BAT_HIT_FLASH: true,     # [STEP-2.2.C] Bat Hitflash
 
 	# --- Exercise 3.1 - Camera & Time / Kinetics ---
-	CAMERA_TRACKING: false,  # [STEP-3.1.A] Dynamic Tracking
-	DANGER_SLOWMO: false,    # [STEP-3.1.B] Danger Zone Slowmo
+	CAMERA_TRACKING: true,   # [STEP-3.1.A] Dynamic Tracking
+	DANGER_SLOWMO: true,     # [STEP-3.1.B] Danger Zone Slowmo
 
 	# --- Exercise 3.2 - Camera & Time / Feedback ---
 	SHOOT_SHAKE: false,      # [STEP-3.2.A] Gun Screenshake

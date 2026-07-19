@@ -28,7 +28,7 @@ class Kinetics:
 			return
 
 		# [STEP-3.1.A]: Track the player's position with the camera
-		pass
+		_track_player_with_camera(camera, camera_center)
 
 
 	# Pre-written for you. Eases the camera toward the player and zooms in a little.

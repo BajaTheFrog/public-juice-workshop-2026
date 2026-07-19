@@ -83,7 +83,7 @@ class Kinetics:
 			return
 
 		# [STEP-3.1.B]: As the immediate danger to the player increases, we can slow time
-		pass
+		Game.services.time.set_sustained_time(Game.messages.time.danger_zone, _player, lerpf(1.0, 0.2, closeness))
 
 
 class Feedback:
