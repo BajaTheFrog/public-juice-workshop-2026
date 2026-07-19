@@ -83,7 +83,7 @@ var _supported: Dictionary = {
 	SCREEN_FLASH: true,      # [STEP-3.2.C] Death Flash
 
 	# --- Exercise 4.1 - Sound / Feedback ---
-	SOUND_ON: false,         # [STEP-4.1.A] Sound
+	SOUND_ON: true,          # [STEP-4.1.A] Sound
 }
 
 var _definitions: Array[StepDefinition] = []
