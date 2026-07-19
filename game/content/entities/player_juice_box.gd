@@ -108,7 +108,13 @@ class Feedback:
 			return
 
 		# [STEP-1.2.B]: Squash on landing to communicate impact
-		pass
+		var squash_amount: Vector2 = Vector2(1.2, 0.8)
+		var squash_time: float = 0.06
+		var recover_time: float = 0.06
+
+		var tween = _restart_body_tween()
+		tween.tween_property(_body_sprite, "scale", body_true_scale * squash_amount, squash_time)
+		tween.tween_property(_body_sprite, "scale", body_true_scale, recover_time)
 
 
 	func on_jump_takeoff() -> void:
@@ -118,7 +124,16 @@ class Feedback:
 			return
 
 		# [STEP-1.2.A]: "Animate" the jump takeoff with some classic squash and stretch
-		pass
+		var squash_amount: Vector2 = Vector2(1.5, 0.5)
+		var stretch_amount: Vector2 = Vector2(0.75, 1.25)
+		var squash_time: float = 0.1
+		var stretch_time: float = 0.1
+		var recover_time: float = 0.2
+
+		var tween = _restart_body_tween()
+		tween.tween_property(_body_sprite, "scale", body_true_scale * squash_amount, squash_time)
+		tween.tween_property(_body_sprite, "scale", body_true_scale * stretch_amount, stretch_time)
+		tween.tween_property(_body_sprite, "scale", body_true_scale, recover_time)
 
 
 	func on_shot(gun: Launcher2D) -> void:

@@ -59,8 +59,8 @@ var _supported: Dictionary = {
 	AIR_DAMPENING: true,     # [STEP-1.1.C] Air Control / Dampening
 
 	# --- Exercise 1.2 - Movement / Feedback ---
-	JUMP_SQUASH: false,      # [STEP-1.2.A] Jump Squash + Stretch
-	LAND_SQUASH: false,      # [STEP-1.2.B] Landing Squash + Stretch
+	JUMP_SQUASH: true,       # [STEP-1.2.A] Jump Squash + Stretch
+	LAND_SQUASH: true,       # [STEP-1.2.B] Landing Squash + Stretch
 
 	# --- Exercise 2.1 - Interactions / Kinetics ---
 	DEATH_HITSTUN: false,    # [STEP-2.1.A] Player Hitstun
