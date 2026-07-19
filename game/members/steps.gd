@@ -78,9 +78,9 @@ var _supported: Dictionary = {
 	DANGER_SLOWMO: true,     # [STEP-3.1.B] Danger Zone Slowmo
 
 	# --- Exercise 3.2 - Camera & Time / Feedback ---
-	SHOOT_SHAKE: false,      # [STEP-3.2.A] Gun Screenshake
-	DEATH_SHAKE: false,      # [STEP-3.2.B] Death Screenshake
-	SCREEN_FLASH: false,     # [STEP-3.2.C] Death Flash
+	SHOOT_SHAKE: true,       # [STEP-3.2.A] Gun Screenshake
+	DEATH_SHAKE: true,       # [STEP-3.2.B] Death Screenshake
+	SCREEN_FLASH: true,      # [STEP-3.2.C] Death Flash
 
 	# --- Exercise 4.1 - Sound / Feedback ---
 	SOUND_ON: false,         # [STEP-4.1.A] Sound

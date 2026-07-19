@@ -142,7 +142,9 @@ class Feedback:
 			return
 
 		# [STEP-3.2.A]: Make the "gun" feel more powerful with screenshake
-		pass
+		var shake_amplitude: float = 8.0
+		var shake_time: float = 0.25
+		Game.services.camera.add_shake(shake_amplitude, shake_time)
 
 
 	func on_hit() -> void:
@@ -152,7 +154,10 @@ class Feedback:
 			return
 
 		# [STEP-3.2.B]: Shake the camera on death
-		pass
+		var shake_amplitude: float = 80.0
+		var shake_time: float = 0.5
+
+		Game.services.camera.add_shake(shake_amplitude, shake_time)
 
 
 	func async_on_died() -> void:

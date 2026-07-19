@@ -61,4 +61,11 @@ class Feedback:
 			return
 
 		# [STEP-3.2.C]: Full-screen flash to drive impact of death
-		pass
+		var flash_time: float = 0.1
+		var flash_alpha: float = 1.0
+
+		var tween = _box.flash_rect.create_tween()
+		tween.set_ignore_time_scale()
+		tween.tween_property(_box.flash_rect, "color:a", flash_alpha, flash_time)
+		await tween.finished
+		_box.flash_rect.color.a = 0.0
