@@ -4,8 +4,6 @@ _**Part 3: 🎥 Camera & Time · Kinetics · Exercise 3.1**_
 
 It's not just controlled actors and other entities that contribute to **Juice** — the context the player experiences it through does as well!
 
-This is the shortest exercise in the workshop. Both effects are a single line, because the heavy lifting (camera math, time-scale management) already lives in pre-written helpers and services. That's kind of the point: the _decision_ of when and how much is the juice, not the plumbing.
-
 > [!TIP]
 >
 > Search `[STEP-3.1` to find every comment in this exercise.
@@ -80,14 +78,11 @@ The function should now read:
 		Game.services.time.set_sustained_time(Game.messages.time.danger_zone, _player, lerpf(1.0, 0.2, closeness))
 ```
 
-`lerpf(1.0, 0.2, closeness)` means: at zero danger run at full speed, at maximum danger run at 20% speed, and smoothly blend everything in between.
-
 ## Try it
 
 1. Press **J** for the Juice menu.
-2. Toggle **📺 Dynamic Tracking** off and on. Move around with **A** / **D** and notice the camera easing after you (and the slight zoom).
-3. Toggle **⏰ Danger Zone Slowmo** off and on. Let a bat get close and feel the playback speed of the game change with the distance to the threat.
-4. Leave the slowmo on and deliberately let a bat get _very_ close without dying. This is the effect doing its real job: telling you you're in trouble without a single UI element.
+2. Toggle **📺 Dynamic Tracking** off and on. Move around with **A** / **D** to notice the camera movement. 
+3. Toggle **⏰ Danger Zone Slowmo** off and on. See how close you can get to a bat!
 
 > [!TIP]
 >

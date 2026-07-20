@@ -63,7 +63,8 @@ The function should now read:
 		tween.tween_property(_body_sprite, "scale", body_true_scale, recover_time)
 ```
 
-`_restart_body_tween()` kills any in-flight squash first, so overlapping jumps and landings can't fight over the sprite's scale.
+`_restart_body_tween()` is just a helper that manages and resets the shared tween between effects. 
+You'd probably be fine just making a tween on the spot with `var tween = create_tween()`
 
 ## B. 🍋 Landing Squash + Stretch
 
@@ -95,14 +96,12 @@ The function should now read:
 		tween.tween_property(_body_sprite, "scale", body_true_scale, recover_time)
 ```
 
-Notice this is the same _shape_ of change as **A** — a tween on `scale` — but shorter and less extreme. Same technique, different intensity, different meaning.
-
 ## Try it
 
 1. Press **J** for the Juice menu.
-2. Toggle **🍋 Jump Squash + Stretch** off and on. Jump with **W** and watch the lemon flatten, stretch, and settle.
-3. Toggle **🍋 Landing Squash + Stretch** off and on. Land a jump: with it on, the lemon gives a satisfying little splat on touchdown.
-4. Try **only** the landing squash with the jump squash off, and vice versa. Notice how differently the same jump reads.
+2. Toggle **🍋 Jump Squash + Stretch** off and on. Jump with **W** and see the difference!
+3. Toggle **🍋 Landing Squash + Stretch** off and on.
+4. Try **only** seeing how the jump looks when one is on and the other is off. 
 
 > [!TIP]
 >

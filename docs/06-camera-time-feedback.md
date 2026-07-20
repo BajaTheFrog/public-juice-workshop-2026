@@ -4,7 +4,7 @@ _**Part 3: 🎥 Camera & Time · Feedback · Exercise 3.2**_
 
 Time to add some visual flair and impact with screen effects.
 
-This exercise is a great demonstration of **restraint and contrast**. We use screenshake twice — once for shooting, once for dying — and the difference between them is the whole lesson. If everything shakes equally hard, nothing means anything.
+This exercise is a great demonstration of **restraint and contrast**. We have two different screenshake use cases: one for shooting, one for dying. The contrast between them is important so that we can tell them apart!
 
 > [!TIP]
 >
@@ -62,8 +62,9 @@ We're going to use screenshake _again_ but this time for a different purpose. Li
 
 In this case, we are shaking the screen from dying super hard. We want no ambiguity about what happened.
 
-LeMon is dead and you killed him.
-You should make the player really sit with that.
+LeMon is dead and the player let him die.
+They couldn't save him. 
+They should have to sit with that.
 
 Same shape of change as **A** but **10x the shake and 2x the duration**.
 
@@ -120,10 +121,9 @@ The function should now read:
 ## Try it
 
 1. Press **J** for the Juice menu.
-2. Toggle **📺 Gun Screenshake** off and on. Fire away — it should make the kick of the gun feel real without being too distracting.
+2. Toggle **📺 Gun Screenshake** off and on. Fire away.
 3. Toggle **📺 Death Screenshake** off and on. Die.
 4. Toggle **📺 Death Flash** off and on. Die again.
-5. Now die with **all three** on. Note how many things fire at once on that one moment: hitstun, a huge shake, a screen flash, and a sound. That is a death the player cannot possibly miss.
 
 > [!TIP]
 >

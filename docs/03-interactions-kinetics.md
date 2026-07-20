@@ -6,7 +6,7 @@ Player movement now feels a bit more interesting! But we aren't just playing in 
 
 We're going to tune the **Kinetics** to drive home the sense of impact and force — both on the player and on the enemies.
 
-A **hitstop** (or hitstun in certain contexts) adds a _very short_ "freeze" to the game. On paper it seems like doing that would break the flow and experience of the game. In practice, when used carefully, the stop communicates to the player that there was contact! That something happened and it was a big deal.
+A **hitstop** (or hitstun in certain contexts such as when I mix them up) adds a _very short_ "freeze" to the game. On paper it seems like doing that would break the flow and experience of the game. In practice, when used carefully, the stop communicates to the player that there was contact! That something happened and it was a big deal.
 
 > [!TIP]
 >
@@ -84,7 +84,7 @@ The function should now read:
 
 Kinetics is not just the movement you control, it is also how the world pushes _you_ around.
 
-We're going to give our gun(?) some knockback when we fire it. It makes it feel a _lot_ more powerful and adds some nuance to when the player should shoot or not. Now there is a reason to _not shoot_ just as much as there is a reason _to shoot_.
+We're going to give our hand (gun?) some knockback when we fire it. It makes it feel a _lot_ more powerful and adds some nuance to when the player should shoot or not. Now there is a reason to _not shoot_ just as much as there is a reason _to shoot_.
 
 Also it unlocks some cool movement tech in the air.
 
@@ -101,7 +101,7 @@ The function should now read:
 		_player.apply_knockback(gun.global_position, _player.knockback_amount)
 ```
 
-Importantly, our `kinetics` lets `player` actually handle the subtleties of applying and adjusting the knockback over time. The `juice_box` just gets to decide _when_ we call it and with how much knockback.
+There are many ways to do this, in our case `Player` has the logic for applying a knockback but `juice_box` controls when. 
 
 ## D. 🍋 Shoot Spread
 
@@ -109,7 +109,7 @@ Importantly, our `kinetics` lets `player` actually handle the subtleties of appl
 - **CLASS**: `Kinetics`
 - **FUNCTION**: `get_shoot_angle()`
 
-As with all of these changes — there is no one-size-fits-all. It depends on your game and your design goals. But one great way to add some _texture_ and _variety_ to otherwise monotonous interactions is to sprinkle in a little randomness.
+As with all of these changes — there is no one-size-fits-all. It depends on your game and your design goals. But one great way to add some _texture_ and _variety_ to otherwise monotonous interactions is to sprinkle in a little randomness. You brain is really good at picking up patterns, particularly when a patter repeats perfectly. 
 
 So that's what we will do with our shot angle. We're gonna nudge the trajectory a bit up and down at random to make the stream of bullets a bit more interesting to work with!
 
@@ -133,10 +133,10 @@ The function should now read:
 ## Try it
 
 1. Press **J** for the Juice menu.
-2. Toggle **🍋 Hitstun** off and on. Run into a bat and clock the stop!
-3. Toggle **👹 Hitstun** off and on. Shoot a bat and see if you can sense the subtle difference. It's much smaller than the player one — that's on purpose.
+2. Toggle **🍋 Hitstun** off and on.
+3. Toggle **👹 Hitstun** off and on.
 4. Toggle **🍋 Gun Knockback** off and on. Hold **Left Mouse Button** and aim wherever. You should feel the knockback pretty clearly and see how it impacts movement. Try shooting downward while airborne.
-5. Toggle **🍋 Shoot Spread** off and on. Hold **Left Mouse Button** and watch how the stream of seeds changes.
+5. Toggle **🍋 Shoot Spread** off and on. Hold **Left Mouse Button**.
 
 > [!TIP]
 >

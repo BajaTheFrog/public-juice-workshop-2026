@@ -89,7 +89,7 @@ The function should now read:
 		await _async_flash(_box, _box.muzzle_sprite, muzzle_flash_time)
 ```
 
-`_async_flash()` is already written for you at the bottom of the class — it shows the sprite, waits, and hides it again. That's the whole trick.
+`_async_flash()` is already written for you at the bottom of the class but its really simple. It just `visible` parameter on the sprite to be `true` and then `false`.
 
 ## C. 👹 Hitflash
 
@@ -117,15 +117,12 @@ The function should now read:
 		await _async_flash(_box, _box.hit_flash_sprites, hit_flash_time)
 ```
 
-`0.02` seconds is _two hundredths of a second_. You will barely consciously see it — and you will absolutely feel its absence when you toggle it off.
-
 ## Try it
 
 1. Press **J** for the Juice menu.
-2. Toggle **🍋 Bigger Bullets** off and on. Hold **Left Mouse Button** — the seeds are twice the size and twice as fun.
-3. Toggle **🍋 Muzzle Flash** off and on. Fire away and watch the barrel.
-4. Toggle **👹 Hitflash** off and on. Shoot a bat and notice what happens when your shots connect.
-5. Now go back to the **By Type** tab and turn all of **FEEDBACK** off, then on. Everything you've built in exercises 1.2 and 2.2 at once.
+2. Toggle **🍋 Bigger Bullets** off and on. Hold **Left Mouse Button**.
+3. Toggle **🍋 Muzzle Flash** off and on and shoot!
+4. Toggle **👹 Hitflash** off and on. Shoot a bat to get that flash.
 
 > [!TIP]
 >

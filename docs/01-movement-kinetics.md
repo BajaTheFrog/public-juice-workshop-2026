@@ -118,10 +118,10 @@ The function now has changes from both **A** and **C**, so this is the finished 
 ## Try it
 
 1. Run the game and press **J** to open the Juice menu.
-2. Toggle **🍋 Acceleration** on and off. Roll with **A** / **D** — feel the difference between easing up to speed and snapping to it.
-3. Toggle **🍋 Jump / Fall Gravity** on and off. Jump with **W** and notice how much less floaty the drop feels with it on.
-4. Toggle **🍋 Air Control / Dampening** on and off. Jump and try to change direction mid-air: with it on, your steering is sluggish and you have to plan the jump; with it off, you can fly around freely.
-5. Now turn **all three** off, then all three on. That's the whole exercise in one flip.
+2. Toggle **🍋 Acceleration** on and off. Roll with **A** / **D**. 
+3. Toggle **🍋 Jump / Fall Gravity** on and off. Jump with **W**.
+4. Toggle **🍋 Air Control / Dampening** on and off. Try moving left and right in the air. 
+5. Now turn **all three** off, then all three on. 
 
 > [!TIP]
 >

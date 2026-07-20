@@ -10,10 +10,6 @@ It's all here.
 
 ## The exercises
 
-Seven exercises across four parts. Parts 1–3 each pair a **Kinetics** exercise with a
-**Feedback** exercise; Part 4 is a single **Feedback** exercise that switches on sound.
-Each exercise bundles a few related effects as its **A**, **B**, **C**... sub-sections.
-
 ### **[Part 1 — 🍋 Player Movement](00.1-part-1-movement.md)**
 | # | Exercise | File(s) |
 | --- | --- | --- |
